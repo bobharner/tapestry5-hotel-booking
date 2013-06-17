@@ -21,9 +21,19 @@ import com.tap5.hotelbooking.security.AuthenticationFilter;
  * configure and extend Tapestry, or to place your own service definitions.
  */
 @SubModule(
-{ HibernateModule.class, DataModule.class })
+{ HibernateModule.class, // DAO layer
+	DataModule.class         // Demo data loading
+	})
 public class HotelBookingModule
 {
+	
+	/**
+	 *  Service Control layer
+	 *  > Interface of a service / Implementation of the service
+	 *  > location: fr.tc.services
+	 *  
+	 * @param binder
+	 */
     public static void bind(ServiceBinder binder)
     {
         binder.bind(Authenticator.class, BasicAuthenticator.class);
