@@ -1,15 +1,15 @@
 package com.tap5.hotelbooking.pages;
 
+import com.tap5.hotelbooking.annotations.AnonymousAccess;
+import com.tap5.hotelbooking.security.AuthenticationException;
+import com.tap5.hotelbooking.services.Authenticator;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-
-import com.tap5.hotelbooking.annotations.AnonymousAccess;
-import com.tap5.hotelbooking.security.AuthenticationException;
-import com.tap5.hotelbooking.services.Authenticator;
+import org.slf4j.Logger;
 
 /**
  * User can sign up on the
@@ -19,6 +19,9 @@ import com.tap5.hotelbooking.services.Authenticator;
 @AnonymousAccess
 public class Signin
 {
+    @Inject
+    private Logger logger;
+
     @Property
     private String flashmessage;
 
@@ -40,6 +43,7 @@ public class Signin
     @Log
     public Object onSubmitFromLoginForm()
     {
+       logger.debug("onSubmitFromLoginForm");
         try
         {
             authenticator.login(username, password);
@@ -49,7 +53,8 @@ public class Signin
             loginForm.recordError(messages.get("error.login"));
             return null;
         }
-
+        if (authenticator.isLoggedIn())
+        	return Book.class;
         return Index.class;
     }
 
