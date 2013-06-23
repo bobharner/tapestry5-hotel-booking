@@ -1,22 +1,5 @@
 package com.tap5.hotelbooking.pages;
 
-import java.util.Calendar;
-
-import org.apache.tapestry5.Block;
-import org.apache.tapestry5.EventConstants;
-import org.apache.tapestry5.PersistenceConstants;
-import org.apache.tapestry5.SelectModel;
-import org.apache.tapestry5.annotations.InjectComponent;
-import org.apache.tapestry5.annotations.Log;
-import org.apache.tapestry5.annotations.OnEvent;
-import org.apache.tapestry5.annotations.PageActivationContext;
-import org.apache.tapestry5.annotations.Persist;
-import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SessionState;
-import org.apache.tapestry5.corelib.components.Form;
-import org.apache.tapestry5.ioc.Messages;
-import org.apache.tapestry5.ioc.annotations.Inject;
-
 import com.tap5.hotelbooking.dal.CrudServiceDAO;
 import com.tap5.hotelbooking.data.BedType;
 import com.tap5.hotelbooking.data.Months;
@@ -24,6 +7,16 @@ import com.tap5.hotelbooking.data.UserWorkspace;
 import com.tap5.hotelbooking.data.Years;
 import com.tap5.hotelbooking.entities.Booking;
 import com.tap5.hotelbooking.entities.Hotel;
+import org.apache.tapestry5.Block;
+import org.apache.tapestry5.EventConstants;
+import org.apache.tapestry5.PersistenceConstants;
+import org.apache.tapestry5.SelectModel;
+import org.apache.tapestry5.annotations.*;
+import org.apache.tapestry5.corelib.components.Form;
+import org.apache.tapestry5.ioc.Messages;
+import org.apache.tapestry5.ioc.annotations.Inject;
+
+import java.util.Calendar;
 
 /**
  * This page implements booking process for a give hotel.
@@ -112,7 +105,11 @@ public class Book
     public void setupBooking()
     {
         booking = userWorkspace.getCurrent();
-        confirmationStep = booking.getStatus();
+        if (booking==null) {
+            confirmationStep = false;
+        } else {
+            confirmationStep = booking.getStatus();
+        }
     }
 
     @OnEvent(value = EventConstants.VALIDATE, component = "bookingForm")

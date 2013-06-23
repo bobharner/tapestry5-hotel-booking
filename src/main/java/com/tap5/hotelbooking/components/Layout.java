@@ -18,7 +18,7 @@ import com.tap5.hotelbooking.services.Authenticator;
  */
 @Import(stylesheet =
 { "context:/static/style.css" }, library =
-{ "context:/static/hotel-booking.js" })
+{ "context:/static/hotel-booking.js" }) //
 public class Layout
 {
     @Property
