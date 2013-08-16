@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+<!--
+    Copyright (c) 2010, Sebastian Sdorra
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice,
+       this list of conditions and the following disclaimer.
+    2. Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimer in the documentation
+       and/or other materials provided with the distribution.
+    3. Neither the name of SCM-Manager; nor the names of its
+       contributors may be used to endorse or promote products derived from this
+       software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY
+    DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+    http://bitbucket.org/sdorra/scm-manager
+-->
+
+<!--
+    Document   : server-config.xml
+    Created on : January 20, 2011, 6:05 PM
+    Author     : sdorra, https://github.com/beolnix/jta-in-jetty8/blob/master/src/main/webapp/WEB-INF/jetty.xml
+    Description: SSL config for jetty8
+-->
+
+<Configure class="org.eclipse.jetty.server.Server">
+    <Call name="addConnector">
+        <Arg>
+            <New class="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                <Set name="host">
+                    <SystemProperty name="jetty.host" />
+                </Set>
+                <Set name="port">
+                    <SystemProperty name="jetty.port" default="8080" />
+                </Set>
+                <Set name="requestHeaderSize">16384</Set>
+                <!-- for mod_proxy -->
+                <!--
+                <Set name="forwarded">true</Set>
+                -->
+            </New>
+        </Arg>
+    </Call>
+                 <!--
+    <New id="tynamo-test-webapp" class="org.eclipse.jetty.webapp.WebAppContext">
+        <Set name="contextPath">/tynamo-test-webapp</Set>  -->
+       <!-- <Set name="war"><SystemProperty name="basedir" default="."/>/var/webapp/scm-webapp.war</Set> -->
+        <!-- disable directory listings -->
+       <!-- <Call name="setInitParameter">
+            <Arg>org.eclipse.jetty.servlet.Default.dirAllowed</Arg>
+            <Arg>false</Arg>
+        </Call>
+    </New> -->
+
+    <!--
+    <New id="docroot" class="org.eclipse.jetty.webapp.WebAppContext">
+        <Set name="contextPath">/</Set>
+        <Set name="baseResource">
+            <New class="org.eclipse.jetty.util.resource.ResourceCollection">
+                <Arg>
+                    <Array type="java.lang.String">
+                        <Item><SystemProperty name="basedir" default="."/>/var/webapp/docroot</Item>
+                    </Array>
+                </Arg>
+            </New>
+        </Set>
+    </New>      -->
+
+    <!--
+    <Set name="handler">
+        <New class="org.eclipse.jetty.server.handler.HandlerCollection">
+            <Set name="handlers">
+                <Array type="org.eclipse.jetty.server.Handler">
+                    <Item>
+                        <Ref id="tynamo-test-webapp" />
+                    </Item>  -->
+                   <!-- <Item>
+                        <Ref id="docroot" />
+                    </Item>  -->
+                    <!--
+                    <Item>
+                      <New id="RequestLog" class="org.eclipse.jetty.server.handler.RequestLogHandler"/>
+                    </Item>
+                    -->  <!--
+                </Array>
+            </Set>
+        </New>
+    </Set>      -->
+
+    <!-- request logging -->
+    <!--
+    <Ref id="RequestLog">
+      <Set name="requestLog">
+        <New id="RequestLogImpl" class="org.eclipse.jetty.server.NCSARequestLog">
+          <Arg><SystemProperty name="basedir" default="."/>/var/log/yyyy_mm_dd.request.log</Arg>
+          <Set name="retainDays">90</Set>
+          <Set name="append">true</Set>
+          <Set name="extended">false</Set>
+          <Set name="LogTimeZone">GMT</Set>
+         </New>
+      </Set>
+    </Ref>
+
+     <New id="ServerLog" class="java.io.PrintStream">
+        <Arg>
+            <New class="org.mortbay.util.RolloverFileOutputStream">
+                <Arg><SystemProperty name="jetty.logs" default="./logs/"/>yyyy_mm_dd.jetty.log</Arg>
+                <Arg type="boolean">false</Arg>
+                <Arg type="int">90</Arg>
+                <Arg><Call class="java.util.TimeZone" name="getTimeZone"><Arg>GMT</Arg></Call></Arg>
+                <Get id="ServerLogName" name="datedFilename"/>
+            </New>
+        </Arg>
+    </New>
+    <Call class="java.lang.System" name="setErr"><Arg><Ref id="ServerLog"/></Arg></Call>
+    <Call class="java.lang.System" name="setOut"><Arg><Ref id="ServerLog"/></Arg></Call>
+    -->
+
+    <!-- mod_proxy_ajp or mod_jk -->
+    <!--
+    <Call name="addConnector">
+      <Arg>
+         <New class="org.eclipse.jetty.ajp.Ajp13SocketConnector">
+           <Set name="port">8009</Set>
+         </New>
+      </Arg>
+    </Call>
+    -->
+
+    <!-- SSL-Connector -->
+    <!--
+       Documentation for the SSL-Connector:
+       http://wiki.eclipse.org/Jetty/Reference/SSL_Connectors
+    -->
+    <!--
+    <Call name="addConnector">
+      <Arg>
+        <New class="org.eclipse.jetty.server.ssl.SslSelectChannelConnector">
+          <Set name="Port">8443</Set>
+          <Set name="maxIdleTime">30000</Set>
+          <Set name="requestHeaderSize">16384</Set>
+          <Set name="keystore"><SystemProperty name="basedir" default="." />/jetty-ssl.keystore</Set>
+          <Set name="password">jetty88</Set>
+          <Set name="keyPassword">jetty88</Set>
+          <Set name="truststore"><SystemProperty name="basedir" default="." />/jetty-ssl.keystore</Set>
+          <Set name="trustPassword">jetty88</Set>
+          <Set name="ExcludeCipherSuites">
+                <Array type="String">
+                    <Item>SSL_RSA_WITH_DES_CBC_SHA</Item>
+                    <Item>SSL_DHE_RSA_WITH_DES_CBC_SHA</Item>
+                    <Item>SSL_DHE_DSS_WITH_DES_CBC_SHA</Item>
+                    <Item>SSL_RSA_EXPORT_WITH_RC4_40_MD5</Item>
+                    <Item>SSL_RSA_EXPORT_WITH_DES40_CBC_SHA</Item>
+                    <Item>SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA</Item>
+                    <Item>SSL_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA</Item>
+                </Array>
+          </Set>
+        </New>
+      </Arg>
+    </Call>    -->
+
+    <!-- JMX support -->
+    <!--
+    <Call id="MBeanServer" class="java.lang.management.ManagementFactory"
+      name="getPlatformMBeanServer" />
+
+    <New id="MBeanContainer" class="org.eclipse.jetty.jmx.MBeanContainer">
+      <Arg>
+        <Ref id="MBeanServer" />
+      </Arg>
+    </New>
+
+    <Get id="Container" name="container">
+      <Call name="addEventListener">
+        <Arg>
+          <Ref id="MBeanContainer" />
+        </Arg>
+      </Call>
+    </Get>
+    -->
+
+</Configure>
