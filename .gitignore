@@ -13,3 +13,5 @@ tidyErrors.txt
 *.orig
 bin/
 /build/
+.idea
+*.iml
