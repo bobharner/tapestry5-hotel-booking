@@ -1,7 +1,7 @@
-# Tapestry 5 demonstration application - Hotel Booking
+# Apache Tapestry: Hotel Booking Simulation
 
 This is the source code to the "Hotel Booking" Tapestry demo app, currently
-running at:
+running with Tapestry 5.4 at:
 
 	http://tapestry.zones.apache.org:8180/tapestry5-hotel-booking
 
@@ -24,4 +24,3 @@ the link on the login page.
 
 * cordenier/cordenier
 * karesti/karesti
-
