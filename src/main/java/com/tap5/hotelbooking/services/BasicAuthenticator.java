@@ -33,7 +33,10 @@ public class BasicAuthenticator implements Authenticator
                 "username",
                 username).and("password", password).parameters());
 
-        if (user == null) { throw new AuthenticationException("The user doesn't exist"); }
+        if (user == null)
+        {
+            throw new AuthenticationException("The user doesn't exist");
+        }
 
         request.getSession(true).setAttribute(AUTH_TOKEN, user);
     }
@@ -41,7 +44,10 @@ public class BasicAuthenticator implements Authenticator
     public boolean isLoggedIn()
     {
         Session session = request.getSession(false);
-        if (session != null) { return session.getAttribute(AUTH_TOKEN) != null; }
+        if (session != null)
+        {
+            return session.getAttribute(AUTH_TOKEN) != null;
+        }
         return false;
     }
 
@@ -65,7 +71,7 @@ public class BasicAuthenticator implements Authenticator
         }
         else
         {
-            throw new IllegalStateException("The user is not logged ! ");
+            throw new IllegalStateException("The user is not logged in.");
         }
         return user;
     }

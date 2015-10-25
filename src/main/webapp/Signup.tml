@@ -1,9 +1,12 @@
 <html t:type="layout" title="Tapestry5-hotel-booking Sign In"
       t:pageTitle="Register"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
+	<h2>Create your account</h2>
+
 	<form class="full-form" t:id="registerForm" >
+		<t:hidden value="target"/>
 		<t:errors/>
 		<table>
 			<tr>
@@ -12,7 +15,7 @@
 				</th>
 				<td>
 					<input t:type="textfield" t:id="username"/>
-				</td>	
+				</td>
 			</tr>
 			<tr>
 				<th>
@@ -20,7 +23,7 @@
 				</th>
 				<td>
 					<input t:type="textfield" t:id="fullname"/>
-				</td>	
+				</td>
 			</tr>
 			<tr>
 				<th>
@@ -28,7 +31,7 @@
 				</th>
 				<td>
 					<input t:type="textfield" t:id="email"/>
-				</td>	
+				</td>
 			</tr>
 			<tr>
 				<th>
@@ -36,7 +39,7 @@
 				</th>
 				<td>
 					<input t:type="passwordField" t:id="password"/>
-				</td>	
+				</td>
 			</tr>
 			<tr>
 				<th>
@@ -44,26 +47,26 @@
 				</th>
 				<td>
 					<input t:type="passwordField" t:id="verifyPassword"/>
-				</td>	
+				</td>
 			</tr>
 			<tr>
     			<th><label t:type="label" t:for="fcaptcha">Enter text displayed below</label></th>
     			<td>
     				<t:kaptchafield image="kaptcha" t:id="fcaptcha" />
-    			</td>  			
+    			</td>
     		</tr>
     		<tr>
     			<th></th>
     			<td>
     				<t:kaptchaimage t:id="kaptcha" style="float:left;"/>
-    			</td>  			
+    			</td>
     		</tr>
 		</table>
     	
 		<div class="form-submit">
 			<input type="submit" value="Register" />
 		</div>
-		<div class="member">Already a member ? <t:pagelink page="SignIn">Login now!</t:pagelink></div>
+		<div class="member">Already a member ? <t:pagelink page="SignIn" context="target">Log in now!</t:pagelink></div>
 	</form>
 
 </html>

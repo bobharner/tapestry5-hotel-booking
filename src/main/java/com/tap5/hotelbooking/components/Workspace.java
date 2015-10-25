@@ -22,7 +22,6 @@ import com.tap5.hotelbooking.entities.Booking;
  */
 public class Workspace
 {
-    @SuppressWarnings("unused")
     @Property
     private DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 

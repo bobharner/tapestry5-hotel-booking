@@ -24,12 +24,10 @@ public class Layout
     @Property
     private String pageName;
 
-    @SuppressWarnings("unused")
     @Property
     @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
     private String pageTitle;
 
-    @SuppressWarnings("unused")
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
     private Block sidebar;

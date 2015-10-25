@@ -29,7 +29,6 @@ public class Book
     @Property
     private UserWorkspace userWorkspace;
 
-    @SuppressWarnings("unused")
     @Property
     @PageActivationContext
     private Hotel hotel;
@@ -56,15 +55,12 @@ public class Book
     @Persist
     private boolean confirmationStep;
 
-    @SuppressWarnings("unused")
     @Property
     private SelectModel bedType = new BedType();
 
-    @SuppressWarnings("unused")
     @Property
     private SelectModel years = new Years();
 
-    @SuppressWarnings("unused")
     @Property
     private SelectModel months = new Months();
 
@@ -91,7 +87,7 @@ public class Book
 
         if (booking == null)
         {
-            return Search.class;
+            return Index.class;
         }
         else
         {
@@ -142,7 +138,7 @@ public class Book
         booking = null;
 
         // Return to search
-        return Search.class;
+        return Index.class;
     }
 
     @OnEvent(value = "cancelConfirm")
@@ -160,7 +156,7 @@ public class Book
 
         booking = null;
 
-        return Search.class;
+        return Index.class;
     }
 
 }

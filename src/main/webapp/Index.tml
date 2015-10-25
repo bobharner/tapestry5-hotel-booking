@@ -1,8 +1,55 @@
-<html t:type="layout" t:pageTitle="tapestry5-hotel-booking Index"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+<html t:type="layout" t:pageTitle="Search for your Hotel"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
-    
+	<h2>Search for a Hotel</h2>
+
+	<form t:type="form" t:zone="result" t:id="searchForm" class="full-form" >
+		<table>
+			<tr>
+				<th>
+					<label t:type="label" t:for="query">Search</label>
+				</th>
+				<td><input type="text" t:type="textfield" t:id="query" t:value="criteria.query"
+						placeholder="Enter City or Hotel Name"/></td>
+			</tr>
+			<tr>
+				<th><label t:type="label" t:for="rowsPerPage">Results</label></th>
+				<td><select t:type="select" t:id="rowsPerPage" t:value="criteria.rowsPerPage" t:model="literal:5,10,15,20"></select></td>
+			</tr>
+		</table>
+		<div class="form-submit">
+			<input type="submit" t:type="submit" class="btn-active" value="Search" /> or <a href="#">cancel</a>
+			<span t:type="ajaxloader" t:trigger="searchForm" t:zone="result"></span>
+		</div>
+	</form>
+
+	<!-- Result area -->
+	<div t:type="zone" t:id="result" id="result" class="section result">
+		<table t:type="grid" t:source="source" t:inPlace="true" t:rowsPerPage="criteria.rowsPerPage" t:include="name,address,zip" t:add="cityState,action" t:row="currentHotel">
+			<p:actionCell><a href="#" t:type="pagelink" t:context="currentHotel" t:page="view">Details</a></p:actionCell>
+			<p:cityStateCell>${currentHotel.city}, ${currentHotel.state}</p:cityStateCell>
+			<p:empty>
+				<p class="empty-result">${message:no-result}</p>
+			</p:empty>
+		</table>
+	</div>
+
+	<t:yourBookings />
+
+	<t:workspace />
+	
+	<p:sidebar>
+        <p>
+            Tapestry's <em>Grid</em> component allows users to efficiently navigate
+            through tabular data. The built-in Hibernate module comes with an optimized version
+            of <em>GridDataSource</em> to create efficient database requests and retrieve only a page at a time.
+        </p>
+        <p>
+            The <em>Form</em> component can be linked to a <em>Zone</em> that will be refreshed on form submit.
+            Also, the Grid component has a built-in partial refresh option 'inPlace'.
+            All these features make it possible to quickly better the user's experience.
+        </p>
+	</p:sidebar>  
 
 </html>

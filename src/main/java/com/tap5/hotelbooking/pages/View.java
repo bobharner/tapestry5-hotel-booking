@@ -7,6 +7,7 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
+import com.tap5.hotelbooking.annotations.AnonymousAccess;
 import com.tap5.hotelbooking.dal.CrudServiceDAO;
 import com.tap5.hotelbooking.data.UserWorkspace;
 import com.tap5.hotelbooking.entities.Hotel;
@@ -18,13 +19,13 @@ import com.tap5.hotelbooking.services.Authenticator;
  * 
  * @author ccordenier
  */
+@AnonymousAccess
 public class View
 {
     @SessionState
     @Property
     private UserWorkspace userWorkspace;
 
-    @SuppressWarnings("unused")
     @Property
     @PageActivationContext
     private Hotel hotel;
@@ -44,7 +45,10 @@ public class View
     @OnEvent(value = EventConstants.SUCCESS, component = "startBookingForm")
     Object startBooking(Hotel hotel)
     {
-        User user = (User) dao.find(User.class, authenticator.getLoggedUser().getId());
+        User user = null;
+        if (authenticator.isLoggedIn()) {
+            user = (User) dao.find(User.class, authenticator.getLoggedUser().getId());
+        }
         userWorkspace.startBooking(hotel, user);
         return Book.class;
     }

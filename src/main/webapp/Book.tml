@@ -1,6 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html t:type="layout" t:pageTitle="Book your room"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
@@ -85,7 +85,7 @@
 				</tr>
 				<tr>
 					<th>
-						<label t:type="label" t:for="creditCardExpiryYear">Expiracy</label>
+						<label t:type="label" t:for="creditCardExpiryYear">Expiration</label>
 					</th>
 					<td class="inline">
 						<select t:type="select" t:id="creditCardExpiryYear" t:value="booking.creditCardExpiryYear" t:model="years"></select>
@@ -121,16 +121,16 @@
 
 	<p:sidebar>
         <p>
-            Tapestry's block provides an efficient way to display different content in function
-            of the context. This technique allows for example to have a wizard's style form in a single
-            page. And then keeping the state object on a single page.
+            Tapestry's <em>block</em> element provides an efficient way to display different
+            content in different contexts. This technique presents a wizard-style form while
+            keeping the the user on a single page.
         </p>
-        
+
         <p>
-        	Actually, most of the Tapestry services are extensible or can be overridden, this let you
-        	imagine whatever you want for your company. Implement it and re-use it ! Also, Tapestry comes with
-        	an elegant meta-programming API that will avoid to have boilerplate code inside application's
-        	page.
+            Most of the Tapestry services are extensible or can be easily overridden. This allows you
+            imagine whatever you want for your company. Implement it and re-use it! Also, Tapestry comes with
+            an elegant meta-programming API that will avoid to have boilerplate code inside application's
+            page.
         </p>
 	</p:sidebar>
 

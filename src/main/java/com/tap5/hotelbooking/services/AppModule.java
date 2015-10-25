@@ -5,7 +5,7 @@ import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
-import org.apache.tapestry5.ioc.annotations.SubModule;
+import org.apache.tapestry5.ioc.annotations.ImportModule;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
 import org.apache.tapestry5.services.ComponentRequestFilter;
@@ -20,11 +20,11 @@ import com.tap5.hotelbooking.security.AuthenticationFilter;
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to
  * configure and extend Tapestry, or to place your own service definitions.
  */
-@SubModule(
-{ HibernateModule.class, // DAO layer
-	DataModule.class         // Demo data loading
-	})
-public class HotelBookingModule
+@ImportModule(
+        { HibernateModule.class, // DAO layer
+            DataModule.class     // Demo data loading
+        })
+public class AppModule
 {
 	
 	/**
@@ -47,6 +47,9 @@ public class HotelBookingModule
 
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
         configuration.add(SymbolConstants.APPLICATION_VERSION, "1.2-SNAPSHOT");
+
+        // use jquery instead of prototype as foundation JS library
+        configuration.add(SymbolConstants.JAVASCRIPT_INFRASTRUCTURE_PROVIDER, "jquery");
     }
 
     @Contribute(ValidatorMacro.class)

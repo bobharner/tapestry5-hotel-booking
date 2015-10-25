@@ -1,5 +1,6 @@
 package com.tap5.hotelbooking.components;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.tapestry5.annotations.OnEvent;
@@ -28,7 +29,6 @@ public class YourBookings
     @Property
     private List<Booking> bookings;
 
-    @SuppressWarnings("unused")
     @Property
     private Booking current;
 
@@ -39,13 +39,17 @@ public class YourBookings
      * @return
      */
     @SetupRender
-    boolean listBookings()
+    void buildBookingsList()
     {
+        if (! authenticator.isLoggedIn()) 
+        {
+            bookings = Collections.emptyList();
+            return;
+        }
         bookings = crudDao.findWithNamedQuery(
-                Booking.BY_USERNAME,
-                QueryParameters.with("username", authenticator.getLoggedUser().getUsername())
-                        .parameters());
-        return bookings.size() > 0 ? true : false;
+        Booking.BY_USERNAME,
+            QueryParameters.with("username", authenticator.getLoggedUser().getUsername())
+                .parameters());
     }
 
     /**

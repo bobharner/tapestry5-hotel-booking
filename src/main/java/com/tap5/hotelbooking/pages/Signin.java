@@ -1,5 +1,6 @@
 package com.tap5.hotelbooking.pages;
 
+import org.apache.tapestry5.EventContext;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.Property;
@@ -32,6 +33,9 @@ public class Signin
     @Property
     private String password;
 
+    @Property
+    String target; // target page name
+
     @Inject
     private Authenticator authenticator;
 
@@ -40,6 +44,23 @@ public class Signin
 
     @Inject
     private Messages messages;
+
+    /**
+     * Respond to page activation by capturing the "target" path info as the
+     * name of the target page (the page to return to after login)
+     * @param context the EventContext
+     */
+    public void onActivate(EventContext context)
+    {
+        if (context.getCount() > 0)
+        {
+            target = context.get(String.class, 0);
+        }
+        else
+        {
+            target = "Index";
+        }
+    }
 
     @Log
     public Object onSubmitFromLoginForm()
@@ -51,11 +72,16 @@ public class Signin
         }
         catch (AuthenticationException ex)
         {
+            // bad username or password entered
             loginForm.recordError(messages.get("error.login"));
             return null;
         }
+        // was login successful?
         if (authenticator.isLoggedIn())
-        	return Book.class;
+        {
+            // redirect to the page the user wanted before being sent to the login page
+            return target;
+        }
         return Index.class;
     }
 

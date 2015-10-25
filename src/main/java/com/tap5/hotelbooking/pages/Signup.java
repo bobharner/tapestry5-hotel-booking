@@ -1,6 +1,7 @@
 package com.tap5.hotelbooking.pages;
 
 import org.apache.tapestry5.EventConstants;
+import org.apache.tapestry5.EventContext;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.OnEvent;
@@ -27,6 +28,9 @@ public class Signup
 {
 
     @Property
+    private String target; // target page name
+
+    @Property
     @Validate("username")
     private String username;
 
@@ -46,7 +50,6 @@ public class Signup
     @Validate("password")
     private String verifyPassword;
 
-    @SuppressWarnings("unused")
     @Property
     private String kaptcha;
 
@@ -62,9 +65,25 @@ public class Signup
     @Inject
     private Authenticator authenticator;
 
-    @SuppressWarnings("unused")
     @InjectPage
     private Signin signin;
+
+    /**
+     * Respond to page activation by capturing the "target" parameter as the
+     * name of the target page (the page to return to after creating an account)
+     * @param ctx the EventContext
+     */
+    public void onActivate(EventContext context)
+    {
+        if (context.getCount() > 0)
+        {
+            target = context.get(String.class, 0);
+        }
+        else
+        {
+            target = "Index";
+        }
+    }
 
     @OnEvent(value = EventConstants.VALIDATE, component = "RegisterForm")
     public void checkForm()
@@ -104,6 +123,6 @@ public class Signup
             return this;
         }
 
-        return Search.class;
+        return Index.class;
     }
 }

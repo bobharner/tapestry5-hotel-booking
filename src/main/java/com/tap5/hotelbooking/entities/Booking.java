@@ -78,11 +78,21 @@ public class Booking implements Serializable
     {
     }
 
+    /**
+     * Constructor for a new Booking object
+     * @param hotel the hotel to book
+     * @param user the user (may be null and filled in later)
+     * @param daysFromNow the number of days from today when the stay starts
+     * @param nights the number of nights
+     */
     public Booking(Hotel hotel, User user, int daysFromNow, int nights)
     {
         this.hotel = hotel;
         this.user = user;
-        this.creditCardName = user.getFullname();
+        if (user != null)
+        {
+            this.creditCardName = user.getFullname();
+        }
         this.smoking = false;
         this.beds = 1;
         setReservationDates(daysFromNow, nights);

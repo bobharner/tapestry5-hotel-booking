@@ -1,6 +1,6 @@
 <html t:type="layout" title="Tapestry5-hotel-booking Settings"
       t:pageTitle="Change your password"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
 	<h2>User's setting : Change your password</h2>
@@ -10,10 +10,18 @@
 		<table>
 			<tr>
 				<th>
-					<label t:type="label" t:for="password">Password:*</label>
+					<label t:type="label" t:for="oldPassword">Old Password:*</label>
 				</th>
 				<td>
-					<input t:type="passwordField" t:id="password" t:validate="password"/>
+					<input t:type="passwordField" t:id="oldPassword" t:validate="password"/>
+				</td>	
+			</tr>
+			<tr>
+				<th>
+					<label t:type="label" t:for="newPassword">New Password:*</label>
+				</th>
+				<td>
+					<input t:type="passwordField" t:id="newPassword" t:validate="password"/>
 				</td>	
 			</tr>
 			<tr>
@@ -28,7 +36,7 @@
 		
 		<div class="form-submit">
 			<input type="submit" value="Change" /> or 
-			<t:pageLink page="search">Cancel</t:pageLink>
+			<t:pageLink page="index">Cancel</t:pageLink>
 		</div>
 	
 	</form>

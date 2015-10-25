@@ -1,5 +1,5 @@
 <html t:type="layout" t:pageTitle="Hotel details"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
@@ -12,10 +12,10 @@
 	</div>
 	
 	<form t:type="form" class="full-form" t:id="startBookingForm" t:context="hotel">
-   		
+
 		<div class="form-submit">
 			<input type="submit" class="btn-active" value="Book this Hotel" /> or 
-			<a href="#" t:type="pagelink" t:page="search">Back to search</a>
+			<a href="#" t:type="pagelink" t:page="index">Back to search</a>
 		</div>
 
    	</form>
@@ -23,8 +23,8 @@
 	<p:sidebar>
         <p>
         	Tapestry has an existing set of components that will help you to quickly
-        	handle common stuff. Displaying Javabean properties, generate form from Javabean, 
-        	display tabular datas... All of these to get a clean and efficient template's code.
+        	handle common needs. Display Javabean properties, generate a form from a Javabean, 
+        	display tabular data...
         </p>
 	</p:sidebar>
 

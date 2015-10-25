@@ -29,9 +29,12 @@ public class Settings
 
     @InjectPage
     private Signin signin;
-    
+
     @Property
-    private String password;
+    private String oldPassword;
+
+    @Property
+    private String newPassword;
 
     @Property
     private String verifyPassword;
@@ -41,7 +44,9 @@ public class Settings
 
     public Object onSuccess()
     {
-        if (!verifyPassword.equals(password))
+        // TODO: verify that the correct old password was given
+
+        if (!verifyPassword.equals(newPassword))
         {
             settingsForm.recordError(messages.get("error.verifypassword"));
 
@@ -51,7 +56,7 @@ public class Settings
         User user = authenticator.getLoggedUser();
         authenticator.logout();
 
-        user.setPassword(password);
+        user.setPassword(newPassword);
 
         crudServiceDAO.update(user);
 
