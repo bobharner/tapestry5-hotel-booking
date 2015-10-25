@@ -41,6 +41,7 @@
             <version>${tapestry-release-version}</version>
         </dependency>
 
+        <!-- The tapestry-kaptcha dependency must be added explicitly -->
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-kaptcha</artifactId>
