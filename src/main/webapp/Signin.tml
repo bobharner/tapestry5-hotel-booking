@@ -11,20 +11,23 @@
 		<table>
 			<tr>
 				<th>
-					<label t:type="label" t:for="username">username:</label>
+					<label t:type="label" t:for="username">User name:</label>
 				</th>
 				<td>
 					<input t:type="textfield" t:id="username" t:validate="username"/>
+					<div class="hint">Hint: try <tt>cordenier</tt></div>
 				</td>	
 			</tr>
 			<tr>
-				<th><label t:type="label" t:for="password">password:</label></th>
-				<td><input type="password" t:type="passwordfield" t:id="password" t:validate="password"/></td>
+				<th><label t:type="label" t:for="password">Password:</label></th>
+				<td><input type="password" t:type="passwordfield" t:id="password" t:validate="password"/>
+					<div class="hint">Hint: try <tt>cordenier</tt></div>
+				</td>
 			</tr>
 		</table>
 		
 		<div class="form-submit">
-			<input type="submit" value="Login" />
+			<input type="submit" value="Log in" />
 		</div>
 		
 		<div class="member">Need an account? <t:pagelink page="SignUp" context="target">Register now!</t:pagelink></div>
@@ -32,11 +35,26 @@
 	</form>
 
 	<p:sidebar>
-        <p>
-            Welcome to Tapestry Hotel Booking. This application demonstrates
-            the Tapestry's development model. We're using only Tapestry's core
-            components, giving you a <em>realistic</em> demonstration of
-            Tapestry's capabilities.
+        <p>This is the Sign In page (Signin.tml/Signin.java).
+        </p>
+        <p>You were sent here because you requested a page that requires you to
+        authenticate (log in). In this app, all pages require you to log in
+        except those whose Java class is annotated with @AnonymousAccess.
+        We've created a "component request filter" (AuthenticationFilter.java,
+        in this case) that enforces that rule. It redirected you to this
+        page because it did not find the
+        the @AnonymousAccess annotation in the Java class of the page you
+        requested.
+        </p>
+        <p>See
+        <a href="https://tapestry.apache.org/security.html">here</a> for
+        more information on this and other security approaches.
+        </p>
+        <p>One final note: the name of the page you requested was appended to
+        the URL of this page, and it will also be passed along when you submit
+        this form, or when you click the Register link, so that eventually,
+        after you have registered and/or logged in, you'll be taken back to the
+        page you wanted to go to.
         </p>
 	</p:sidebar>
   

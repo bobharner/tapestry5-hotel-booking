@@ -248,3 +248,10 @@ DL.t-beandisplay DT {
 DL.t-beandisplay DT:after {
     content: none;
 }
+
+DIV.hint {
+	color: #960;
+}
+DIV.hint TT {
+	margin: 0 .5em;
+}

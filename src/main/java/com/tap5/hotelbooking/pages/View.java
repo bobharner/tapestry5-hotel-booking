@@ -52,4 +52,11 @@ public class View
         userWorkspace.startBooking(hotel, user);
         return Book.class;
     }
+
+    /**
+     * Return a string that would otherwise be hard to put directly in a TML file
+     */
+    public String getExpansionExample() {
+        return "${hotel.name}";
+    }
 }

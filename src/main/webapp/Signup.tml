@@ -69,4 +69,30 @@
 		<div class="member">Already a member ? <t:pagelink page="SignIn" context="target">Log in now!</t:pagelink></div>
 	</form>
 
+	<p:sidebar>
+		<p>This page (Signup.tml/Signup.java) consists of a form with a simple
+		HTML table, and labels and form fields. Unlike on the home page, this
+		form does <em>not</em> use Ajax and zones. It's a regular HTML form.
+		</p>
+		<p>The CAPTCHA image is produced by the Kaptcha component (&lt;t:kaptcha&gt;),
+		which is in a separate JAR provided by Tapestry rather than in Tapestry's
+		JAR. So if you're using Maven or Gradle or another dependency management
+		tool, you'll have to explicitly add the tapestry-kaptcha dependency.
+		See the pom.xml file of this project for an example. 
+		</p>
+		<p>When you click the Register button, the form submission is handled by
+		methods within the Signup class (Signup.java). Form validation is
+		handled by the checkForm() method (because it has an @OnEvent annotation
+		indicating that it is an event handler for the "validate" event).
+		Form submission (after validation is successful) is handled by the
+		proceedSignup() method (because its @OnEvent annotation indicates that
+		it should handle a <em>successful</em> form submission).
+		</p>
+		<p>Tapestry has built-in support for both the JSR-303 beanvalidator API
+		and Tapestry's own @Validate annotation.
+
+		</p>
+	</p:sidebar>
+
+
 </html>

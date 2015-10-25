@@ -121,16 +121,19 @@
 
 	<p:sidebar>
         <p>
-            Tapestry's <em>block</em> element provides an efficient way to display different
-            content in different contexts. This technique presents a wizard-style form while
-            keeping the the user on a single page.
+            This page (Book.tml/Book.java)
         </p>
-
-        <p>
-            Most of the Tapestry services are extensible or can be easily overridden. This allows you
-            imagine whatever you want for your company. Implement it and re-use it! Also, Tapestry comes with
-            an elegant meta-programming API that will avoid to have boilerplate code inside application's
-            page.
+        <p>Here we're  using Tapestry's Block element (&lt;t:block&gt;) to lay out two
+           different HTML forms, and we're using the
+           <a href="http://tapestry.apache.org/current/apidocs/org/apache/tapestry5/corelib/components/Delegate.html">
+           Delegate</a> component (&lt;t:delegate&gt;)
+           to decide which form to display. This technique
+           presents a wizard-style form while keeping the the user on a single page.
+        </p>
+        <p>In this case, first a form is presented containing fields for
+           dates and payment details. When that form is submitted, the page
+           is redrawn with the form replaced by the booking details and a
+           "Confirm" button.
         </p>
 	</p:sidebar>
 
