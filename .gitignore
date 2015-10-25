@@ -12,3 +12,4 @@ tidyErrors.txt
 *.origin
 *.orig
 bin/
+/build/
