@@ -15,7 +15,8 @@ to do:
 
     mvn jetty:run
 
-or you can deploy it to the servlet container of your choice.
+or you can do `mvn package` and deploy the resulting war file to the servlet
+container of your choice.
 
 The following are two built-in accounts (usernames / passwords) that you can
 use to log into the app, or you can create another account by registering with
