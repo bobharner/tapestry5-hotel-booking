@@ -54,7 +54,7 @@
 		<div class="clearer"></div>
 
 		<div id="footer">Created with <a href="http://tapestry.apache.org/">Apache Tapestry 5.4</a> and JPA (with Hibernate 3). 
-		Get the source code of Hotel Booking at <a href="http://github.com/ccordenier/tapestry5-hotel-booking/">Github</a></div>
+		Get the source code of Hotel Booking at <a href="http://github.com/bobharner/tapestry5-hotel-booking-5.4/">Github</a></div>
 
 	</div>
 </body>
