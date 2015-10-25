@@ -1,21 +1,26 @@
 # Tapestry 5 demonstration application - Hotel Booking
 
-http://tapestry.zones.apache.org:8180/tapestry5-hotel-booking/signin
-http://localhost:8080/tapestry5-hotel-booking/signin
+This is the source code to the "Hotel Booking" Tapestry demo app, currently
+running at:
 
-login/pass:
-    cordenier/cordenier
-    karesti/karesti
+	http://tapestry.zones.apache.org:8180/tapestry5-hotel-booking
 
-More information:
+This is Tapestry's take on a classic "Hotel Booking" application (ala Seam). It
+demonstrates simple page navigation, form validation and submission, session
+management (including a shopping-cart-like mechanism), and easy annotation-based
+authentication/authorization.
 
-http://spreadthesource.com/2010/09/wooki-0-4-is-out-whats-next/
-https://github.com/ccordenier/tapestry5-hotel-booking/
+Building and running the app is easy. It uses maven and jetty, so you just need
+to do:
 
-Now runs with 5.4-alpha-14
-http://tapestry.apache.org/release-notes-54.html
-http://apache-tapestry-mailing-list-archives.1045711.n5.nabble.com/Tapestry-5-4-alpha-14-td5722573.html
-http://tapestryjava.blogspot.fr/2013/07/tapestry-54-avalanche-of-fixed-issues.html
+    mvn jetty:run
 
-==
-hmac to enable
+or you can deploy it to the servlet container of your choice.
+
+The following are two built-in accounts (usernames / passwords) that you can
+use to log into the app, or you can create another account by registering with
+the link on the login page.
+
+* cordenier/cordenier
+* karesti/karesti
+
