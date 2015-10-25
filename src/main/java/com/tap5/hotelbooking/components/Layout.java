@@ -14,7 +14,7 @@ import com.tap5.hotelbooking.pages.Index;
 import com.tap5.hotelbooking.services.Authenticator;
 
 /**
- * Layout component for pages of application tapestry5-hotel-booking.
+ * Layout component for all pages
  */
 @Import(stylesheet =
 { "context:/static/style.css" }, library =
