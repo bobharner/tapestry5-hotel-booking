@@ -16,7 +16,7 @@ body {
 	font-size:13px;	
 }
 
-h1 { margin:0px 15px; float:left; width: 650px; }
+h1 { margin:0px 15px; float:left; }
 h2, h3 { font-family: Georgia, serif; font-weight:normal; font-size:21px; color: #569D2F; }
 
 a { color:#569D2F; font-weight: normal; text-decoration: underline; }
@@ -40,11 +40,8 @@ p { margin-bottom:10px; line-height:1.3em; }
 
 .light{ color:#999999; }
 
-.col { float:right; width: 290px; padding: 0px 15px; margin-right: 15px; }
-.big-col { margin-right:345px !important; }
-
 #top { background: #ffffff url('bg.png') repeat-x top right; }
-#content { padding:0px 15px;  margin:0px 15px; }
+#content { }
 #footer { font-size:12px; color:#999999; text-align: center; padding: 15px 15px;}
 
 /* homepage */

@@ -4,31 +4,33 @@
 	<title>Tapestry 5 Hotel Booking - ${pageTitle}</title>
 </head>
 <body id="homepage">
-	<div class="wrapper bs">
-		<ul class="topnav">
-			<t:security.authenticated>
-				<li><span>Welcome ${user?.fullName}</span></li>
-				<li>
-					<a href="#" t:type="pageLink" t:page="index">Search</a>
-				</li>
-				<li>
-					<a href="#" t:type="pageLink" t:page="settings">Settings</a>
-				</li>
-				<li class="last">
-					<a href="#" t:type="actionlink" t:id="logout" id="logout">Log out</a>
-				</li>
-				<p:else>
+	<div class="container bs">
+		<div class="row">
+			<ul class="topnav">
+				<t:security.authenticated>
+					<li><span>Welcome ${user?.fullName}</span></li>
 					<li>
 						<a href="#" t:type="pageLink" t:page="index">Search</a>
 					</li>
-					<li class="last">
-						<t:pageLink page="signin">Log in</t:pageLink>
+					<li>
+						<a href="#" t:type="pageLink" t:page="settings">Settings</a>
 					</li>
-			</p:else>
-			</t:security.authenticated>
-		</ul>
+					<li class="last">
+						<a href="#" t:type="actionlink" t:id="logout" id="logout">Log out</a>
+					</li>
+					<p:else>
+						<li>
+							<a href="#" t:type="pageLink" t:page="index">Search</a>
+						</li>
+						<li class="last">
+							<t:pageLink page="signin">Log in</t:pageLink>
+						</li>
+				</p:else>
+				</t:security.authenticated>
+			</ul>
+		</div>
 
-		<div id="top">
+		<div id="top" class="row">
 
 			<h1><img src="${context:/static/tapestry_s.png}" alt="Tapestry" id="tapestry" /></h1>
 
@@ -38,29 +40,30 @@
 
 		</div>
 		
-		<div id="bar">
+		<div id="bar" class="row">
 			<strong>This is a demo app, showing some basic Apache Tapestry
 			functionality in the form of hotel booking simulation.</strong>
 		</div>
 		
-		<div class="col">
-			<h3 class="first">How this works</h3>
-			<p>
-				<t:delegate to="sidebar" />
-			</p>
+		
+		<div class="row">
+			<div id="content" class="col-md-8">
+				<t:body />
+				<div class="clearer"></div>
+			</div>
+
+			<div class="col-md-4">
+				<h3 class="first">How this works</h3>
+				<p>
+					<t:delegate to="sidebar" />
+				</p>
+			</div>
 		</div>
-		
-		<div id="content" class="big-col">
-			
-			<t:body />
-			<div class="clearer"></div>			
 
-		</div>		
-		
-		<div class="clearer"></div>
-
-		<div id="footer">Created with <a href="http://tapestry.apache.org/">Apache Tapestry 5.4</a> and JPA (with Hibernate 3). 
-		Get the source code of Hotel Booking at <a href="http://github.com/bobharner/tapestry5-hotel-booking-5.4/">Github</a></div>
+		<div id="footer" class="row">
+			Created with <a href="http://tapestry.apache.org/">Apache Tapestry 5.4</a> and JPA (with Hibernate 3). 
+			Get the source code of Hotel Booking at <a href="http://github.com/bobharner/tapestry5-hotel-booking-5.4/">Github</a>
+		</div>
 
 	</div>
 </body>
