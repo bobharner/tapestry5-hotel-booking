@@ -3,7 +3,7 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
-	<h2>User's setting : Change your password</h2>
+	<h2>Settings &mdash; Change your password</h2>
 
 	<form class="full-form" t:id="settingsForm">
 		<t:errors/>
@@ -45,8 +45,8 @@
 		<p>This page (Settings.tml/Settings.java) consists of a simple Tapestry
 		form. It also demonstrates the
 		<a href="http://tapestry.apache.org/5.3/apidocs/org/apache/tapestry5/corelib/components/Errors.html">errors</a>
-		component (&lt;t:errors&gt;), which is used to display errors that are not tied to a specific field. You'll
-		see this if you intentionly enter different "New Password" and "Verify Password" values here.
+		component (&lt;t:errors&gt;), which is used to display errors that are not tied to a specific field. You
+		can see this by intentionly enter different "New Password" and "Verify Password" values here.
 		</p>
 	</p:sidebar>
   
