@@ -20,7 +20,7 @@ import com.tap5.hotelbooking.entities.Booking;
  * @author ccordenier
  * @author karesti
  */
-public class Workspace
+public class ShoppingCart
 {
     @Property
     private DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
