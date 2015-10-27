@@ -252,3 +252,11 @@ DIV.hint {
 DIV.hint TT {
 	margin: 0 .5em;
 }
+DIV.shoppingCart {
+	margin-bottom: 2em;
+	border: 1px solid #ccc;
+	padding: 1em;
+}
+#content DIV.shoppingCart H2 {
+	margin-top: 0;
+}
