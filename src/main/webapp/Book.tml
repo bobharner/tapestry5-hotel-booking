@@ -117,7 +117,7 @@
 	</t:block>
 	 </t:if>
 	
-	<t:workspace />
+	<t:shoppingCart />
 
 	<p:sidebar>
         <p>

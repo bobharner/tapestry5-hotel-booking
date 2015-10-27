@@ -39,7 +39,7 @@
 
 	<t:yourBookings />
 
-	<t:workspace />
+	<t:shoppingCart />
 	
 	<p:sidebar>
         <p>This is the home page of the Tapestry Hotel Booking demonstration app.
