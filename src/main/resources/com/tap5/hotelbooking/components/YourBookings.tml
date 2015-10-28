@@ -6,7 +6,11 @@
 		<h2>Your bookings</h2>
 		<ul id="your-bookings" xml:space="preserve">
 			<li t:type="loop" t:source="bookings" t:value="current">
-				${current?.hotel?.name} <a hraf="#" t:type="eventlink" t:context="current" t:event="cancelBooking">Cancel</a>
+				${current?.hotel?.name} (${current?.hotel?.address},
+				${current?.hotel?.city} ${current?.hotel?.state}
+				${current?.hotel?.country})
+				arriving ${current?.checkinDate}, departing ${current?.checkoutDate}
+				&ndash; <a hraf="#" t:type="eventlink" t:context="current" t:event="cancelBooking">Cancel</a>
 			</li>
 		</ul>
 	</div>
