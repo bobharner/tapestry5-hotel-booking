@@ -95,7 +95,9 @@
 				</tr>				
 			</table>
 			<div class="form-submit">
-				<input type="submit" class="btn-active" value="Book" /> or <a href="#" t:type="eventlink" t:event="cancelBooking">Cancel</a>
+				<input type="submit" class="btn-active" value="Book this hotel..." />
+				or
+				<a href="#" t:type="eventlink" t:event="cancelBooking">Cancel</a>
 			</div>
 		</form>
 	</t:block>
@@ -110,7 +112,9 @@
 		<form class="full-form" t:type="form" t:id="confirmForm">
 			<t:errors />				
 			<div class="form-submit">
-				<input type="submit" class="btn-active" value="Confirm" /> or <a href="#" t:type="eventlink" t:event="cancelConfirm">Cancel</a>
+				<input type="submit" class="btn-active" value="Confirm" />
+				or
+				<a href="#" t:type="eventlink" t:event="cancelConfirm">Cancel</a>
 			</div>
 		</form>
 
@@ -121,14 +125,13 @@
 
 	<p:sidebar>
         <p>
-            This page (Book.tml/Book.java)
-        </p>
-        <p>Here we're  using Tapestry's Block element (&lt;t:block&gt;) to lay out two
-           different HTML forms, and we're using the
+           This page (Book.tml/Book.java) uses Tapestry's Block element
+           (&lt;t:block&gt;) to lay out two different HTML forms, and we're using the
            <a href="http://tapestry.apache.org/current/apidocs/org/apache/tapestry5/corelib/components/Delegate.html">
            Delegate</a> component (&lt;t:delegate&gt;)
            to decide which form to display. This technique
-           presents a wizard-style form while keeping the the user on a single page.
+           provides wizard-style user interaction while keeping the the user
+           on a single page.
         </p>
         <p>In this case, first a form is presented containing fields for
            dates and payment details. When that form is submitted, the page
