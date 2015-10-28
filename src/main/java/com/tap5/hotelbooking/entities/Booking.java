@@ -26,7 +26,8 @@ import javax.validation.constraints.Size;
 
 /**
  * <p>
- * <strong>Booking</strong> is the model/entity class that represents a hotel booking.
+ * <strong>Booking</strong> is the model/entity class that represents a hotel
+ * booking (aka a "reservation").
  * </p>
  * 
  * @author Gavin King
@@ -208,7 +209,7 @@ public class Booking implements Serializable
     }
 
     @NotNull(message = "Credit card name is required")
-    @Size(min = 3, max = 70, message = "Credit card name is required")
+    @Size(min = 3, max = 70, message = "Credit card name must be between 3 and 70 characters    ")
     public String getCreditCardName()
     {
         return creditCardName;
