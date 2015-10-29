@@ -10,7 +10,7 @@
 				<t:security.authenticated>
 					<li><span>Welcome ${user?.fullName}</span></li>
 					<li>
-						<a href="#" t:type="pageLink" t:page="index">Search</a>
+						<a href="#" t:type="pageLink" t:page="index">Find a Hotel</a>
 					</li>
 					<li>
 						<a href="#" t:type="pageLink" t:page="settings">Settings</a>
@@ -20,7 +20,7 @@
 					</li>
 					<p:else>
 						<li>
-							<a href="#" t:type="pageLink" t:page="index">Search</a>
+							<a href="#" t:type="pageLink" t:page="index">Find a Hotel</a>
 						</li>
 						<li class="last">
 							<t:pageLink page="signin">Log in</t:pageLink>
@@ -34,7 +34,7 @@
 
 			<h1><img src="${context:/static/tapestry_s.png}" alt="Tapestry" id="tapestry" /></h1>
 
-			<div id="aside">Welcome to the Apache Tapestry 5 Hotel Booking demonstration app</div>
+			<div id="aside">Welcome to Tapestry's Hotel Booking demonstration</div>
 			
 			<div class="clearer"></div>
 

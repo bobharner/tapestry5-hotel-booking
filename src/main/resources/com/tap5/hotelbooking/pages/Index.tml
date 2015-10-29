@@ -1,8 +1,8 @@
-<html t:type="layout" t:pageTitle="Search for your Hotel"
+<html t:type="layout" t:pageTitle="Find a Hotel"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
-	<h2>Search for a Hotel</h2>
+	<h2>Find a Hotel</h2>
 
 	<form t:type="form" t:zone="result" t:id="searchForm" class="full-form" >
 		<table>

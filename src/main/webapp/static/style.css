@@ -40,14 +40,14 @@ p { margin-bottom:10px; line-height:1.3em; }
 
 .light{ color:#999999; }
 
-#top { background: #ffffff url('bg.png') repeat-x top right; }
+#top { background: #ffffff url('scenery/1280px-Sunset_at_Lone_Pine_-_South_Australia_(Explored).png') center; }
 #content { }
 #footer { font-size:12px; color:#999999; text-align: center; padding: 15px 15px;}
 
 /* homepage */
-#homepage #aside { float:right; width: 280px; padding:70px 30px 0px 0px; font-family: Georgia, serif; font-size:18px; font-style:italic; line-height:1.3em; vertical-align: text-top;}
+#homepage #aside { color: white; float:right; width: 15em; padding:66px 30px 0px 0px; font-size:20px; line-height:1.3em; vertical-align: text-top;}
 
-#homepage h2 { margin-bottom:10px; margin-top:20px;  }
+#homepage h2, #homepage h3 { margin-bottom:10px; margin-top:20px;  }
 #homepage h2.first { margin-top: 0px; }
 #homepage h2 a , #homepage h3 a { text-decoration:none; }
 
@@ -56,7 +56,7 @@ p { margin-bottom:10px; line-height:1.3em; }
 #features li h3 { margin-left:15px; font-size:21px; color: #569D2F; }
 .feature { background-color: #eeeeee; padding:15px; line-height:1.3em;}
 
-#bar { margin:15px 0px; padding:10px; background-color: #569D2F; color:#ffffff; text-align:center; }
+#bar { margin:0px -15px; padding:10px; background-color: #569D2F; color:#ffffff; text-align:center; }
 #bar a { color: #ffffff; }
 
 #references { margin:10px 0px; }
