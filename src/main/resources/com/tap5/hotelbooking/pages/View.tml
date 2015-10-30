@@ -5,16 +5,17 @@
 
 	<h2>Hotel details</h2>
 
-	<t:beanDisplay class="hotel-details" t:object="hotel" t:exclude="id" t:include="name,address,city,state,zip,country,stars">
+	<t:beanDisplay t:object="hotel" t:include="name,address,city,state,zip,country,stars">
 		<p:stars>
-			<t:hotelclass stars="hotel?.stars" />
+			<t:hotelRating stars="hotel?.stars" />
 		</p:stars>
 	</t:beanDisplay>
 	
 	<form t:type="form" class="full-form" t:id="startBookingForm" t:context="hotel">
 
 		<div class="form-submit">
-			<input type="submit" class="btn-active" value="Book this Hotel" /> or 
+			<input type="submit" class="btn btn-default" value="Book this Hotel" />
+			or 
 			<a href="#" t:type="pagelink" t:page="index">Back to search</a>
 		</div>
 
@@ -36,6 +37,11 @@
         <p>Optional parameters on the BeanDisplay component control
            which properties are shown here. We are hiding the "id" property,
            for example.
+        </p>
+        <p>To display the stars, we've created a simple "HotelRating" component,
+            (with a HotelRating.tml template file and a matching
+            HotelRating.java class) that takes as a parameter the number of
+            starts that should be displayed.
         </p>
         <p>The BeanDisplay component is convenient for quickly rendering data.
            But it's almost as easy to lay out pages like this using conventional

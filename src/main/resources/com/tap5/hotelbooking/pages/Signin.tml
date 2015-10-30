@@ -5,32 +5,29 @@
 
 	<h2>Sign into your account</h2>
 
-	<form t:type="form" class="full-form" t:id="loginForm">
+	<form t:type="form" class="form-horizontal" t:id="loginForm">
 		<t:hidden value="target"/>
 		<t:errors />
-		<table>
-			<tr>
-				<th>
-					<label t:type="label" t:for="username">User name:</label>
-				</th>
-				<td>
+		<div class="form-group">
+				<label t:type="label" t:for="username" class="col-md-4">User name:</label>
+			<div class="col-md-8">
 					<input t:type="textfield" t:id="username" t:validate="username"/>
 					<div class="hint">Hint: try <tt>cordenier</tt></div>
-				</td>	
-			</tr>
-			<tr>
-				<th><label t:type="label" t:for="password">Password:</label></th>
-				<td><input type="password" t:type="passwordfield" t:id="password" t:validate="password"/>
+			</div>	
+		</div>
+		<div class="form-group">
+				<label t:type="label" t:for="password" class="col-md-4">Password:</label>
+			<div class="col-md-8">
+				<input type="password" t:type="passwordfield" t:id="password" t:validate="password"/>
 					<div class="hint">Hint: try <tt>cordenier</tt></div>
-				</td>
-			</tr>
-		</table>
-		
-		<div class="form-submit">
+			</div>
+		</div>
+
+		<div class="col-md-offset-4 col-md-8">
 			<input type="submit" value="Log in" />
+			<div class="member">Need an account? <t:pagelink page="SignUp" context="target">Register now!</t:pagelink></div>
 		</div>
 		
-		<div class="member">Need an account? <t:pagelink page="SignUp" context="target">Register now!</t:pagelink></div>
 	 
 	</form>
 

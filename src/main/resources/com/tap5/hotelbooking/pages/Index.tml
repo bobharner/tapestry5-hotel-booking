@@ -4,40 +4,43 @@
 
 	<h2>Find a Hotel</h2>
 
-	<form t:type="form" t:zone="result" t:id="searchForm" class="full-form" >
-		<table>
-			<tr>
-				<th>
-					<label t:type="label" t:for="query">Search</label>
-				</th>
-				<td><input type="text" t:type="textfield" t:id="query" t:value="criteria.query"
-						placeholder="Enter City or Hotel Name"/>
+	<form t:type="form" t:zone="result" t:id="searchForm" class="form-horizontal" >
+		<div class="form-group">
+			<label t:type="label" t:for="query" class="col-md-4">Search</label>
+			<div class="col-md-8">
+				<input type="text" t:type="textfield" t:id="query" t:value="criteria.query"
+						placeholder="Enter City or Hotel Name" class="form-control"/>
 					<div class="hint">Hint: try <tt>Marriott</tt> or <tt>Hilton</tt></div>
-				</td>
-			</tr>
-			<tr>
-				<th><label t:type="label" t:for="rowsPerPage">Results</label></th>
-				<td><select t:type="select" t:id="rowsPerPage" t:value="criteria.rowsPerPage" t:model="literal:5,10,15,20"></select></td>
-			</tr>
-		</table>
-		<div class="form-submit">
-			<input type="submit" t:type="submit" class="btn-active" value="Find Matching Hotels" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label t:type="label" t:for="rowsPerPage" class="col-md-4">Results</label>
+			<div class="col-md-8">
+				<select t:type="select" t:id="rowsPerPage" class="form-control"
+						t:value="criteria.rowsPerPage" t:model="literal:5,10,15,20"></select>
+			</div>
+		</div>
+		<div class="col-md-offset-4 col-md-8">
+			<input type="submit" t:type="submit" class="btn btn-default" value="Find Matching Hotels" />
 			<span t:type="ajaxloader" t:trigger="searchForm" t:zone="result"></span>
 		</div>
 	</form>
 
 	<!-- Result area -->
-	<t:zone t:id="result" id="result" class="section result">
-		<t:grid t:source="source" t:inPlace="true" t:rowsPerPage="criteria.rowsPerPage" t:include="name,address,zip" t:add="cityState,action" t:row="currentHotel">
-			<p:actionCell><t:pagelink t:context="currentHotel" t:page="view">Details</t:pagelink></p:actionCell>
-			<p:cityStateCell>${currentHotel.city}, ${currentHotel.state}</p:cityStateCell>
-			<p:empty>
-				<t:if test="criteria.query">
-					<p class="empty-result">${message:no-result}</p>
-				</t:if>
-			</p:empty>
-		</t:grid>
-	</t:zone>
+	<div class="clearer"></div>
+	<div class="section result">
+		<t:zone t:id="result" id="result">
+			<t:grid t:source="source" t:inPlace="true" t:rowsPerPage="criteria.rowsPerPage" t:include="name,address,zip" t:add="cityState,action" t:row="currentHotel">
+				<p:actionCell><t:pagelink t:context="currentHotel" t:page="view">Details</t:pagelink></p:actionCell>
+				<p:cityStateCell>${currentHotel.city}, ${currentHotel.state}</p:cityStateCell>
+				<p:empty>
+					<t:if test="criteria.query">
+						<p class="empty-result">${message:no-result}</p>
+					</t:if>
+				</p:empty>
+			</t:grid>
+		</t:zone>
+	</div>
 
 	<t:yourBookings />
 
