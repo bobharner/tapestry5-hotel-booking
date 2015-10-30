@@ -54,9 +54,7 @@
 
 			<div class="col-md-4">
 				<h3 class="first">How this works</h3>
-				<p>
-					<t:delegate to="sidebar" />
-				</p>
+				<t:delegate to="sidebar" />
 			</div>
 		</div>
 
