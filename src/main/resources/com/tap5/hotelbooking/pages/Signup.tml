@@ -4,6 +4,12 @@
       xmlns:p="tapestry:parameter">
 
 	<h2>Create your account</h2>
+	
+	<div class="alert alert-warning">
+		Note: this is a demonstration site. Feel free to create an account here,
+		but please do <em>not</em> enter sensitive information into this form.
+		Also, your account will be deleted after a period of time.
+	</div>
 
 	<form class="form-horizontal" t:id="registerForm" >
 		<t:hidden value="target"/>
@@ -12,42 +18,47 @@
 		<div class="form-group">
 			<label t:type="label" t:for="username" class="col-md-4">User name:</label>
 			<div class="col-md-8">
-				<input t:type="textfield" t:id="username"/>
+				<input t:type="textfield" t:id="username"
+					placeholder="desired user name"/>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label t:type="label" t:for="fullname" class="col-md-4">Full name:</label>
 			<div class="col-md-8">
-					<input t:type="textfield" t:id="fullname"/>
+				<input t:type="textfield" t:id="fullname"
+					placeholder="first and last names"/>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label t:type="label" t:for="email" class="col-md-4">Email:</label>
 			<div class="col-md-8">
-				<input t:type="textfield" t:id="email"/>
+				<input t:type="textfield" t:id="email"
+					placeholder="email address"/>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label t:type="label" t:for="password" class="col-md-4">Password:</label>
 			<div class="col-md-8">
-				<input t:type="passwordField" t:id="password"/>
+				<input t:type="passwordField" t:id="password"
+					placeholder="desired password (at least 6 characters)"/>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label t:type="label" t:for="verifyPassword" class="col-md-4">Verify password:</label>
 			<div class="col-md-8">
-				<input t:type="passwordField" t:id="verifyPassword"/>
+				<input t:type="passwordField" t:id="verifyPassword"
+					placeholder="re-type your password"/>
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label t:type="label" t:for="fcaptcha" class="col-md-4">Enter text displayed below</label>
+			<label t:type="label" t:for="fcaptcha" class="col-md-4">Are you human?</label>
 			<div class="col-md-8">
-				<t:kaptchafield image="kaptcha" t:id="fcaptcha" />
+				<t:kaptchafield image="kaptcha" t:id="fcaptcha" placeholder="enter the text in the image below" />
 			</div>
 		</div>
 
