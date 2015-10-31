@@ -43,11 +43,12 @@
             HotelRating.java class) that takes as a parameter the number of
             starts that should be displayed.
         </p>
-        <p>The BeanDisplay component is convenient for quickly rendering data.
+        <p xml:space="preserve">
+           The BeanDisplay component is convenient for quickly rendering data.
            But it's almost as easy to lay out pages like this using conventional
            html and Tapestry's
            <a href="http://tapestry.apache.org/component-templates.html">expansions syntax</a>,
-           for example: Hotel name: ${expansionExample}.
+           for example: <b>${message:name-label}:</b> $<t:outputRaw value="literal:{hotel.name}"/>.
         </p>
         <p>
            Note that this page is <em>idempotent</em> (gives the same result every time,
