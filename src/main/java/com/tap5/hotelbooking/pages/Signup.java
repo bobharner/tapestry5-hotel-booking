@@ -6,6 +6,7 @@ import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.Secure;
 import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
@@ -24,6 +25,7 @@ import com.tap5.hotelbooking.services.Authenticator;
  * @author karesti
  */
 @AnonymousAccess
+@Secure
 public class Signup
 {
 

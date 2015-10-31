@@ -4,6 +4,7 @@ import org.apache.tapestry5.EventContext;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.annotations.Secure;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -20,6 +21,7 @@ import com.tap5.hotelbooking.services.Authenticator;
  * @author karesti
  */
 @AnonymousAccess
+@Secure
 public class Signin
 {
 	 private final static Logger LOG = LoggerFactory.getLogger(Signin.class);
