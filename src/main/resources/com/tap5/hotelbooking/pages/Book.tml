@@ -67,7 +67,7 @@
 					<label t:type="label" t:for="creditCardNumber" class="col-md-4">Credit Card Number</label>
 					<div class="col-md-8">
 						<input t:type="textfield" t:id="creditCardNumber" t:value="booking.creditCardNumber"
-							placeholder="NNNN-NNNN-NNNN-NNNN"/>
+							placeholder="NNNNNNNNNNNNNNNN"/>
 						<div class="hint">
 							Do not enter real credit card information into this form!
 						</div>
