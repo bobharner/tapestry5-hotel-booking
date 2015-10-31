@@ -53,6 +53,9 @@
 			</div>
 
 			<div class="col-md-4">
+			
+				<t:yourBookings />
+			
 				<h3 class="first">How this works</h3>
 				<t:delegate to="sidebar" />
 			</div>

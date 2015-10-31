@@ -42,11 +42,10 @@
 		</t:zone>
 	</div>
 
-	<t:yourBookings />
-
 	<t:shoppingCart />
 	
 	<p:sidebar>
+
         <p>This is the home page of the Tapestry Hotel Booking demonstration app.
            This page is constructed by Tapestry
            using an HTML-formatted template file, Index.tml. The small amount of
