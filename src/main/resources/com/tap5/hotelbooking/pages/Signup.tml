@@ -5,67 +5,64 @@
 
 	<h2>Create your account</h2>
 
-	<form class="full-form" t:id="registerForm" >
+	<form class="form-horizontal" t:id="registerForm" >
 		<t:hidden value="target"/>
 		<t:errors/>
-		<table>
-			<tr>
-				<th>
-					<label t:type="label" t:for="username">User name:</label>
-				</th>
-				<td>
-					<input t:type="textfield" t:id="username"/>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label t:type="label" t:for="fullname">Full name:</label>
-				</th>
-				<td>
-					<input t:type="textfield" t:id="fullname"/>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label t:type="label" t:for="email">Email:</label>
-				</th>
-				<td>
-					<input t:type="textfield" t:id="email"/>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label t:type="label" t:for="password">Password:</label>
-				</th>
-				<td>
-					<input t:type="passwordField" t:id="password"/>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					<label t:type="label" t:for="verifyPassword">Verify password:</label>
-				</th>
-				<td>
-					<input t:type="passwordField" t:id="verifyPassword"/>
-				</td>
-			</tr>
-			<tr>
-    			<th><label t:type="label" t:for="fcaptcha">Enter text displayed below</label></th>
-    			<td>
-    				<t:kaptchafield image="kaptcha" t:id="fcaptcha" />
-    			</td>
-    		</tr>
-    		<tr>
-    			<th></th>
-    			<td>
-    				<t:kaptchaimage t:id="kaptcha" style="float:left;"/>
-    			</td>
-    		</tr>
-		</table>
-    	
-		<div class="form-submit">
-			<input type="submit" value="Register" />
+
+		<div class="form-group">
+			<label t:type="label" t:for="username" class="col-md-4">User name:</label>
+			<div class="col-md-8">
+				<input t:type="textfield" t:id="username"/>
+			</div>
 		</div>
+
+		<div class="form-group">
+			<label t:type="label" t:for="fullname" class="col-md-4">Full name:</label>
+			<div class="col-md-8">
+					<input t:type="textfield" t:id="fullname"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label t:type="label" t:for="email" class="col-md-4">Email:</label>
+			<div class="col-md-8">
+				<input t:type="textfield" t:id="email"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label t:type="label" t:for="password" class="col-md-4">Password:</label>
+			<div class="col-md-8">
+				<input t:type="passwordField" t:id="password"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label t:type="label" t:for="verifyPassword" class="col-md-4">Verify password:</label>
+			<div class="col-md-8">
+				<input t:type="passwordField" t:id="verifyPassword"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label t:type="label" t:for="fcaptcha" class="col-md-4">Enter text displayed below</label>
+			<div class="col-md-8">
+				<t:kaptchafield image="kaptcha" t:id="fcaptcha" />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-4 col-md-8">
+				<t:kaptchaimage t:id="kaptcha" class="offset-md-4 col-md-8"/>
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<div class="col-md-offset-4 col-md-8">
+				<input type="submit" value="Register" class="btn btn-default"/>
+			</div>
+		</div>
+
 		<div class="member">Already a member ? <t:pagelink page="SignIn" context="target">Log in now!</t:pagelink></div>
 	</form>
 

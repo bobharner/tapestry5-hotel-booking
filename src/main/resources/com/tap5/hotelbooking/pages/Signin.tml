@@ -9,11 +9,11 @@
 		<t:hidden value="target"/>
 		<t:errors />
 		<div class="form-group">
-				<label t:type="label" t:for="username" class="col-md-4">User name:</label>
+			<label t:type="label" t:for="username" class="col-md-4">User name:</label>
 			<div class="col-md-8">
-					<input t:type="textfield" t:id="username" t:validate="username"/>
-					<div class="hint">Hint: try <tt>cordenier</tt></div>
-			</div>	
+				<input t:type="textfield" t:id="username" t:validate="username"/>
+				<div class="hint">Hint: try <tt>cordenier</tt></div>
+			</div>
 		</div>
 		<div class="form-group">
 				<label t:type="label" t:for="password" class="col-md-4">Password:</label>
