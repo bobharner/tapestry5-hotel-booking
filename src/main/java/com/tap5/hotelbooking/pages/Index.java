@@ -11,6 +11,7 @@ import org.apache.tapestry5.hibernate.HibernateGridDataSource;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
 import com.tap5.hotelbooking.annotations.AnonymousAccess;
@@ -62,7 +63,14 @@ public class Index
         @Override
         protected void applyAdditionalConstraints(Criteria crit)
         {
-            crit.add(Restrictions.ilike("name", criteria.getSearchPattern()));
+            // allow "*" to match everything
+            if ("*".equals(criteria.getSearchPattern()))
+            {
+                return;
+            }
+            Criterion searchHotel = Restrictions.ilike("name", criteria.getSearchPattern());
+            Criterion searchCity = Restrictions.ilike("city", criteria.getSearchPattern());
+            crit.add(Restrictions.or(searchHotel, searchCity));
         }
     }
 
