@@ -7,6 +7,12 @@
 	<h2>Book hotel room</h2>
 
 	<t:if test="booking">
+
+		<div class="alert alert-warning">
+			Note: this is a demonstration site. Do not enter real credit card
+			information into this form.
+		</div>
+
 		<div class="hotel-details" t:type="beandisplay" t:object="booking.hotel" t:exclude="id" t:include="name,address,city,state,zip,country,price,stars">
 			<p:stars>
 				<t:hotelRating stars="booking?.hotel?.stars" />
@@ -60,7 +66,11 @@
 				<div class="form-group">
 					<label t:type="label" t:for="creditCardNumber" class="col-md-4">Credit Card Number</label>
 					<div class="col-md-8">
-						<input t:type="textfield" t:id="creditCardNumber" t:value="booking.creditCardNumber"/>
+						<input t:type="textfield" t:id="creditCardNumber" t:value="booking.creditCardNumber"
+							placeholder="NNNN-NNNN-NNNN-NNNN"/>
+						<div class="hint">
+							Do not enter real credit card information into this form!
+						</div>
 					</div>
 				</div>
 
@@ -73,7 +83,7 @@
 				</div>
 
 				<div class="form-group">
-					<label t:type="label" t:for="creditCardName" class="col-md-4">Credit Card Name</label>
+					<label t:type="label" t:for="creditCardName" class="col-md-4">Name on Card</label>
 					<div class="col-md-8">
 							<input t:type="textfield" t:id="creditCardName" class="form-control"
 								t:value="booking.creditCardName"/>
@@ -81,13 +91,14 @@
 				</div>
 
 				<div class="form-group">
-					<label t:type="label" t:for="creditCardExpiryYear" class="col-md-4">Expiration</label>
-					<div class="col-md-8">
-						<select t:type="select" t:id="creditCardExpiryYear" class="form-control"
-							t:value="booking.creditCardExpiryYear" t:model="years"></select>
-						&nbsp;
+					<label t:type="label" t:for="creditCardExpiryYear" class="col-sm-4">Card Expiration</label>
+					<div class="col-xs-12 col-sm-4">
 						<select t:type="select" t:id="creditCardExpiryMonth" class="form-control"
 							t:value="booking.creditCardExpiryMonth" t:model="months"></select>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<select t:type="select" t:id="creditCardExpiryYear" class="form-control"
+							t:value="booking.creditCardExpiryYear" t:model="years"></select>
 					</div>
 				</div>
 
