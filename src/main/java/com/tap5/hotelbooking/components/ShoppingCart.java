@@ -48,6 +48,10 @@ public class ShoppingCart
 
     public boolean getIsCurrent()
     {
+        if (current == null || userWorkspace.getCurrent() == null)
+        {
+            return false;
+        }
         return current.equals(userWorkspace.getCurrent().equals(current));
     }
 }
