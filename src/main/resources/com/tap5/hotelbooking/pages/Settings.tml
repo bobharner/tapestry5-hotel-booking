@@ -5,37 +5,43 @@
 
 	<h2>Settings &mdash; Change your password</h2>
 
-	<form class="full-form" t:id="settingsForm">
+	<form class="form-horizontal" t:id="settingsForm">
+
 		<t:errors/>
-		<table>
-			<tr>
-				<th>
-					<label t:type="label" t:for="oldPassword">Old Password:*</label>
-				</th>
-				<td>
-					<input t:type="passwordField" t:id="oldPassword" t:validate="password"/>
-				</td>	
-			</tr>
-			<tr>
-				<th>
-					<label t:type="label" t:for="newPassword">New Password:*</label>
-				</th>
-				<td>
-					<input t:type="passwordField" t:id="newPassword" t:validate="password"/>
-				</td>	
-			</tr>
-			<tr>
-				<th>
-					<label t:type="label" t:for="verifyPassword">Verify Password:*</label>
-				</th>
-				<td>
-					<input t:type="passwordField" t:id="verifyPassword" t:validate="password"/>
-				</td>	
-			</tr>
-		</table>
-		
-		<div class="form-submit">
-			<input type="submit" value="Change" /> or 
+
+		<div class="form-group">
+			<label class="control-label col-md-4">User Name</label>
+			<div class="col-md-8">
+				${userName}
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label t:type="label" t:for="oldPassword" class="col-md-4">Old Password:*</label>
+			<div class="col-md-8">
+				<input t:type="passwordField" t:id="oldPassword" t:validate="password"
+					placeholder="current password"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label t:type="label" t:for="newPassword" class="col-md-4">New Password:*</label>
+			<div class="col-md-8">
+				<input t:type="passwordField" t:id="newPassword" t:validate="password"
+					placeholder="desired new password"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label t:type="label" t:for="verifyPassword" class="col-md-4">Verify Password:*</label>
+			<div class="col-md-8">
+				<input t:type="passwordField" t:id="verifyPassword" t:validate="password"
+					placeholder="desired new password (again)"/>
+			</div>
+		</div>
+
+		<div class="col-md-offset-4 col-md-8">
+			<input type="submit" value="Change" class="btn btn-default"/> or 
 			<t:pageLink page="index">Cancel</t:pageLink>
 		</div>
 	
