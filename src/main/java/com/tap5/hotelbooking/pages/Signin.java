@@ -1,6 +1,9 @@
 package com.tap5.hotelbooking.pages;
 
 import org.apache.tapestry5.EventContext;
+import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.alerts.Duration;
+import org.apache.tapestry5.alerts.Severity;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.Property;
@@ -25,9 +28,6 @@ import com.tap5.hotelbooking.services.Authenticator;
 public class Signin
 {
 	 private final static Logger LOG = LoggerFactory.getLogger(Signin.class);
-	 
-    @Property
-    private String flashmessage;
 
     @Property
     private String username;
@@ -46,6 +46,9 @@ public class Signin
 
     @Inject
     private Messages messages;
+
+    @Inject
+    private AlertManager alertManager;
 
     /**
      * Respond to page activation by capturing the "target" path info as the
@@ -81,20 +84,13 @@ public class Signin
         // was login successful?
         if (authenticator.isLoggedIn())
         {
+            // display a transient "success" message
+            alertManager.alert(Duration.TRANSIENT, Severity.SUCCESS, messages.format("signin.welcome", authenticator.getLoggedUser().getFullname()));
+
             // redirect to the page the user wanted before being sent to the login page
             return target;
         }
         return Index.class;
-    }
-
-    public String getFlashMessage()
-    {
-        return flashmessage;
-    }
-
-    public void setFlashMessage(String flashmessage)
-    {
-        this.flashmessage = flashmessage;
     }
 
 }

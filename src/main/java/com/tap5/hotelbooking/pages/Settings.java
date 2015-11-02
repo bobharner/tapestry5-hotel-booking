@@ -1,5 +1,8 @@
 package com.tap5.hotelbooking.pages;
 
+import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.alerts.Duration;
+import org.apache.tapestry5.alerts.Severity;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
@@ -26,6 +29,9 @@ public class Settings
 
     @Inject
     private Authenticator authenticator;
+    
+    @Inject
+    AlertManager alertManager;
 
     @InjectPage
     private Signin signin;
@@ -44,24 +50,35 @@ public class Settings
 
     public Object onSuccess()
     {
-        // TODO: verify that the correct old password was given
+        User user = authenticator.getLoggedUser();
 
-        if (!verifyPassword.equals(newPassword))
+        // verify that the correct old password was given
+        if (!user.getPassword().equals(oldPassword))
         {
-            settingsForm.recordError(messages.get("error.verifypassword"));
-
+            settingsForm.recordError(messages.get("error.wrongOldpassword"));
             return null;
         }
 
-        User user = authenticator.getLoggedUser();
-        authenticator.logout();
+        // verify that the 2 new passwords match
+        if (!verifyPassword.equals(newPassword))
+        {
+            settingsForm.recordError(messages.get("error.verifypassword"));
+            return null;
+        }
 
+        // update the password
         user.setPassword(newPassword);
-
         crudServiceDAO.update(user);
 
-        signin.setFlashMessage(messages.get("settings.password-changed"));
-        
-        return signin;
+        // display a transient "success" message
+        alertManager.alert(Duration.TRANSIENT, Severity.SUCCESS, messages.get("settings.password-changed"));
+
+        return null; // stay on the same page
     }
+
+    public String getUserName()
+    {
+        return authenticator.getLoggedUser().getUsername();
+    }
+
 }
