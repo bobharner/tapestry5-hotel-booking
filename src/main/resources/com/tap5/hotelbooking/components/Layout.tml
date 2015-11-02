@@ -41,11 +41,12 @@
 		</div>
 		
 		<div id="bar" class="row">
+			<t:alerts showDismissAll="false" class="alerts"/>
 			<strong>This is a demo app, introducing basic Apache Tapestry
 			functionality in the form of hotel booking simulation.</strong>
 		</div>
-		
-		
+
+
 		<div class="row">
 			<div id="content" class="col-md-8">
 				<t:body />

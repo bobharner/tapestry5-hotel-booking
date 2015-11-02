@@ -168,3 +168,9 @@ DIV.shoppingCart, DIV.yourBookings {
 DIV.result {
 	margin-top: 2em;
 }
+
+DIV.alerts {
+	position: absolute;
+	top: 8em;
+	left: 50em;
+}
