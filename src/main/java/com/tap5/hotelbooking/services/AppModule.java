@@ -1,5 +1,8 @@
 package com.tap5.hotelbooking.services;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
+
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
@@ -46,7 +49,14 @@ public class AppModule
     {
 
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
-        configuration.add(SymbolConstants.APPLICATION_VERSION, "1.2-SNAPSHOT");
+        configuration.add(SymbolConstants.APPLICATION_VERSION, "2.0-SNAPSHOT");
+        configuration.add(SymbolConstants.PRODUCTION_MODE, "true");
+
+        // Generate a random HMAC key for form signing (not cluster safe).
+        // Normally it would be better to use a fixed password-like string, but
+        // we can't because this file is published as open source software.
+        configuration.add(SymbolConstants.HMAC_PASSPHRASE,
+                new BigInteger(130, new SecureRandom()).toString(32));
 
         // use jquery instead of prototype as foundation JS library
         configuration.add(SymbolConstants.JAVASCRIPT_INFRASTRUCTURE_PROVIDER, "jquery");
