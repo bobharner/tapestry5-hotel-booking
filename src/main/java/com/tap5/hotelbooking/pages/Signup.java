@@ -5,6 +5,7 @@ import org.apache.tapestry5.EventContext;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.OnEvent;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.Secure;
 import org.apache.tapestry5.beaneditor.Validate;
@@ -45,6 +46,7 @@ public class Signup
     private String email;
 
     @Property
+    @Persist("flash")
     @Validate("password")
     private String password;
 
