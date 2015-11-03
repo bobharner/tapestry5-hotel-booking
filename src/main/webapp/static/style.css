@@ -155,6 +155,8 @@ DIV.hint {
 }
 DIV.hint TT {
 	margin: 0 .5em;
+	font-style: italic;
+	font-weight: bold;
 }
 DIV.shoppingCart, DIV.yourBookings {
 	margin: 2em 0;

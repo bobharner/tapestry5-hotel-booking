@@ -11,7 +11,7 @@
 				<input type="text" t:type="textfield" t:id="query" t:value="criteria.query"
 						placeholder="Enter City or Hotel Name" class="form-control"
 						validate="required"/>
-					<div class="hint">Hint: try <tt>Marriott</tt> or <tt>San Francisco</tt></div>
+					<div class="hint">Hint: try <tt>Marriott</tt> or <tt>San Francisco</tt> or <tt>*</tt></div>
 			</div>
 		</div>
 		<div class="form-group">
