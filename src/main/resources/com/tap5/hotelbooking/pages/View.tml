@@ -41,7 +41,7 @@
         <p>To display the stars, we've created a simple "HotelRating" component,
             (with a HotelRating.tml template file and a matching
             HotelRating.java class) that takes as a parameter the number of
-            starts that should be displayed.
+            stars that should be displayed.
         </p>
         <p xml:space="preserve">
            The BeanDisplay component is convenient for quickly rendering data.
