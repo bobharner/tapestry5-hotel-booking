@@ -42,7 +42,8 @@
 		
 		<div id="bar" class="row">
 			<t:alerts showDismissAll="false" class="alerts"/>
-			<strong>This is a demo app, introducing basic Apache Tapestry
+			<strong>This is a demo app, introducing basic
+			<a href="http://tapestry.apache.org/">Apache Tapestry</a>
 			functionality in the form of hotel booking simulation.</strong>
 		</div>
 
