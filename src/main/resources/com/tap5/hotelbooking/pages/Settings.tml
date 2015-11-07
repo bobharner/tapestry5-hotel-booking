@@ -41,7 +41,7 @@
 		</div>
 
 		<div class="col-md-offset-4 col-md-8">
-			<input type="submit" value="Change" class="btn btn-default"/> or 
+			<input type="submit" value="Save" class="btn btn-default"/> or 
 			<t:pageLink page="index">Cancel</t:pageLink>
 		</div>
 	
