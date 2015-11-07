@@ -9,7 +9,7 @@ body {
 h1 { margin:0px 15px; float:left; }
 h2, h3 { font-family: Georgia, serif; font-weight:normal; font-size:21px; color: #569D2F; }
 
-a { color:#569D2F; font-weight: normal; text-decoration: underline; }
+a { color:#569D2F; text-decoration: underline; }
 a img { text-decoration:none; }
 
 .clearer { clear:both; }
