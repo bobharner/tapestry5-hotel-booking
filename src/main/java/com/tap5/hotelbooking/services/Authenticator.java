@@ -12,9 +12,9 @@ public interface Authenticator
 {
 
     /**
-     * Gets the logged user
+     * Gets the logged-in user
      * 
-     * @return User, the logged User
+     * @return User, the logged in user
      */
     User getLoggedUser();
 
@@ -26,7 +26,7 @@ public interface Authenticator
     boolean isLoggedIn();
 
     /**
-     * Logs the user.
+     * Logs in the user.
      * 
      * @param username
      * @param password
@@ -39,4 +39,20 @@ public interface Authenticator
      * Logs out the user
      */
     void logout();
+
+    /**
+     * Encrypt the given password, using a one-way hash
+     * @param password the original, plain-text password
+     * @return the encrypted password, with the digest algorithm and "::" prepended
+     */
+    String encryptPassword(String password) throws AuthenticationException;
+
+    /**
+     * Determine whether the given password matches the one stored for the
+     * current user
+     * @param password the plain-text password to check
+     * @return true if matching, false otherwise
+     * @throws AuthenticationException if the encryption fails for some reason
+     */
+    boolean verifyPassword(String password) throws AuthenticationException;
 }

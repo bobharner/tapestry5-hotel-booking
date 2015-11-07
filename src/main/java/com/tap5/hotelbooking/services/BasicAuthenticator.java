@@ -1,8 +1,14 @@
 package com.tap5.hotelbooking.services;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Formatter;
+
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.Session;
+import org.slf4j.Logger;
 
 import com.tap5.hotelbooking.dal.CrudServiceDAO;
 import com.tap5.hotelbooking.dal.QueryParameters;
@@ -18,6 +24,10 @@ import com.tap5.hotelbooking.security.AuthenticationException;
 public class BasicAuthenticator implements Authenticator
 {
 
+    private static final String PASSWORD_CHARSET = "UTF-8";
+
+    private static final String DIGEST_ALGORITHM = "SHA-512";
+
     public static final String AUTH_TOKEN = "authToken";
 
     @Inject
@@ -25,13 +35,16 @@ public class BasicAuthenticator implements Authenticator
 
     @Inject
     private Request request;
+    
+    @Inject Logger logger;
 
+    @Override
     public void login(String username, String password) throws AuthenticationException
     {
+        String digest = encryptPassword(password);
 
         User user = crudService.findUniqueWithNamedQuery(User.BY_CREDENTIALS, QueryParameters.with(
-                "username",
-                username).and("password", password).parameters());
+                "username", username).and("password", digest).parameters());
 
         if (user == null)
         {
@@ -41,6 +54,45 @@ public class BasicAuthenticator implements Authenticator
         request.getSession(true).setAttribute(AUTH_TOKEN, user);
     }
 
+    @Override
+    public String encryptPassword(String password) throws AuthenticationException
+    {
+        MessageDigest digest;
+        byte[] result;
+        try
+        {
+            digest = MessageDigest.getInstance(DIGEST_ALGORITHM);
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            throw new AuthenticationException("No such algorithm: " + DIGEST_ALGORITHM, e);
+        }
+        try
+        {
+            result = digest.digest(password.getBytes(PASSWORD_CHARSET));
+        }
+        catch (UnsupportedEncodingException e)
+        {
+            throw new AuthenticationException("Unsupported encoding: " + PASSWORD_CHARSET, e);
+        }
+        return DIGEST_ALGORITHM + "::" + bytesToHex(result);
+    }
+    
+    /**
+     * Convert an array of bytes to a hex-encoded string
+     * @param input the array of bytes
+     * @return the equivalent hex-encoded string
+     */
+    private static String bytesToHex(byte[] input) {
+        try (Formatter form = new Formatter() )
+        {
+            for (int i = 0; i < input.length; i++)
+               form.format("%02x", input[i]);
+            return form.toString();
+        }
+    }
+
+    @Override
     public boolean isLoggedIn()
     {
         Session session = request.getSession(false);
@@ -51,6 +103,7 @@ public class BasicAuthenticator implements Authenticator
         return false;
     }
 
+    @Override
     public void logout()
     {
         Session session = request.getSession(false);
@@ -61,6 +114,7 @@ public class BasicAuthenticator implements Authenticator
         }
     }
 
+    @Override
     public User getLoggedUser()
     {
         User user = null;
@@ -74,6 +128,16 @@ public class BasicAuthenticator implements Authenticator
             throw new IllegalStateException("The user is not logged in.");
         }
         return user;
+    }
+
+    @Override
+    public boolean verifyPassword(String candidatePassword) throws AuthenticationException
+    {
+        if (candidatePassword == null)
+        {
+            return false;
+        }
+        return encryptPassword(candidatePassword).equals(getLoggedUser().getPassword());
     }
 
 }

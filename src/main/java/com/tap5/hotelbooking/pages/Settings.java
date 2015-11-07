@@ -12,6 +12,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 
 import com.tap5.hotelbooking.dal.CrudServiceDAO;
 import com.tap5.hotelbooking.entities.User;
+import com.tap5.hotelbooking.security.AuthenticationException;
 import com.tap5.hotelbooking.services.Authenticator;
 
 /**
@@ -48,12 +49,10 @@ public class Settings
     @Component
     private Form settingsForm;
 
-    public Object onSuccess()
+    public Object onSuccess() throws AuthenticationException
     {
-        User user = authenticator.getLoggedUser();
-
         // verify that the correct old password was given
-        if (!user.getPassword().equals(oldPassword))
+        if (!authenticator.verifyPassword(oldPassword))
         {
             settingsForm.recordError(messages.get("error.wrongOldpassword"));
             return null;
@@ -66,8 +65,9 @@ public class Settings
             return null;
         }
 
+        User user = authenticator.getLoggedUser();
         // update the password
-        user.setPassword(newPassword);
+        user.setPassword(authenticator.encryptPassword(newPassword));
         crudServiceDAO.update(user);
 
         // display a transient "success" message

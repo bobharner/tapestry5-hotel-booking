@@ -58,7 +58,7 @@ public class User
     private String email;
 
     @Column(nullable = false)
-    @Size(min = 3, max = 12)
+    @Size(min = 3, max = 256)
     @NotNull
     private String password;
 
