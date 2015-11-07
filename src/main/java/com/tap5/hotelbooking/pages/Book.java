@@ -73,6 +73,15 @@ public class Book
     {
         return confirmationStep ? confirmBlock : bookBlock;
     }
+    
+    /**
+     * Get a heading string to display at the top of the page
+     * @return the heading string
+     */
+    public String getHeading()
+    {
+        return confirmationStep ? "Please confirm the following" : "Book this room";
+    }
 
     public String getSecuredCardNumber()
     {
