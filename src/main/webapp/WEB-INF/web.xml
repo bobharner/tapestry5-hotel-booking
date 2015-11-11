@@ -5,10 +5,10 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-    <display-name>Tapestry 5 HotelBooking Application</display-name>
+    <display-name>Tapestry Hotel Booking Application</display-name>
 
     <context-param>
-        <!-- tell Tapestry 5 where to look for pages, components and mixins -->
+        <!-- tell Tapestry where to look for pages, components and mixins -->
         <param-name>tapestry.app-package</param-name>
         <param-value>com.tap5.hotelbooking</param-value>
     </context-param>

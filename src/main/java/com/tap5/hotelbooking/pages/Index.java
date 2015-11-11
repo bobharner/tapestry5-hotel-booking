@@ -43,7 +43,7 @@ public class Index
     private Hotel currentHotel;
 
     /**
-     * This datasource is used by Tapestry 5 Grid to search and paginate
+     * This datasource is used by the Tapestry Grid component to search and paginate
      * 
      * @author ccordenier
      */
