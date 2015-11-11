@@ -18,7 +18,7 @@
 					<li class="last">
 						<a href="#" t:type="actionlink" t:id="logout" id="logout">${message:nav.logout}</a>
 					</li>
-					<p:else>
+				<p:else>
 						<li>
 							<a href="#" t:type="pageLink" t:page="index">${message:nav.findAHotel}</a>
 						</li>
