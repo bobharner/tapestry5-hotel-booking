@@ -16,7 +16,7 @@
 		<t:errors/>
 
 		<div class="form-group">
-			<label t:type="label" t:for="username" class="col-md-4">User name:</label>
+			<label t:type="label" t:for="username" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="textfield" t:id="username"
 					placeholder="desired user name"/>
@@ -24,7 +24,7 @@
 		</div>
 
 		<div class="form-group">
-			<label t:type="label" t:for="fullname" class="col-md-4">Full name:</label>
+			<label t:type="label" t:for="fullname" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="textfield" t:id="fullname"
 					placeholder="first and last names"/>
@@ -32,7 +32,7 @@
 		</div>
 
 		<div class="form-group">
-			<label t:type="label" t:for="email" class="col-md-4">Email:</label>
+			<label t:type="label" t:for="email" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="textfield" t:id="email"
 					placeholder="email address"/>
@@ -40,7 +40,7 @@
 		</div>
 
 		<div class="form-group">
-			<label t:type="label" t:for="password" class="col-md-4">Password:</label>
+			<label t:type="label" t:for="password" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="passwordField" t:id="password"
 					placeholder="desired password (at least 6 characters)"/>
@@ -48,7 +48,7 @@
 		</div>
 
 		<div class="form-group">
-			<label t:type="label" t:for="verifyPassword" class="col-md-4">Verify password:</label>
+			<label t:type="label" t:for="verifyPassword" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="passwordField" t:id="verifyPassword"
 					placeholder="re-type your password"/>
@@ -56,7 +56,7 @@
 		</div>
 
 		<div class="form-group">
-			<label t:type="label" t:for="fcaptcha" class="col-md-4">Are you human?</label>
+			<label t:type="label" t:for="fcaptcha" class="col-md-4"/>
 			<div class="col-md-8">
 				<t:kaptchafield image="kaptcha" t:id="fcaptcha" placeholder="enter the text in the image below" />
 			</div>
@@ -74,7 +74,7 @@
 			</div>
 		</div>
 
-		<div class="member">Already a member ? <t:pagelink page="SignIn" context="target">Log in now!</t:pagelink></div>
+		<div class="member">${message:alreadyMember} <t:pagelink page="SignIn" context="target">${message:logInNow}</t:pagelink></div>
 	</form>
 
 	<p:sidebar>

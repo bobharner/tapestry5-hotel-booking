@@ -4,7 +4,7 @@
 	<t:if test="!bookings?.empty">
 
 		<div class="shoppingCart">
-			<h2>Booking in progress</h2>
+			<h2>${message:heading.bookingInProgress}</h2>
 			
 			<ul id="workspace" xml:space="preserve">
 				<li t:type="loop" t:source="bookings" t:value="current"><a href="#" t:type="pagelink" t:page="book" t:context="current.hotel" title="${current?.hotel?.name}">${current?.hotel?.name}</a>

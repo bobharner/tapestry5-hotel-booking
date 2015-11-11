@@ -48,7 +48,7 @@ public class AppModule
             MappedConfiguration<String, String> configuration)
     {
 
-        configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
+        configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en,es");
         configuration.add(SymbolConstants.APPLICATION_VERSION, "2.0-SNAPSHOT");
         configuration.add(SymbolConstants.PRODUCTION_MODE, "true");
 

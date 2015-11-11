@@ -85,7 +85,7 @@ public class Signin
         if (authenticator.isLoggedIn())
         {
             // display a transient "success" message
-            alertManager.alert(Duration.TRANSIENT, Severity.SUCCESS, messages.format("signin.welcome", authenticator.getLoggedUser().getFullname()));
+            alertManager.alert(Duration.TRANSIENT, Severity.SUCCESS, messages.format("nav.welcome", authenticator.getLoggedUser().getFullname()));
 
             // redirect to the page the user wanted before being sent to the login page
             return target;

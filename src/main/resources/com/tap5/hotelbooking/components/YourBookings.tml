@@ -3,7 +3,7 @@
 	
 <t:if test="bookings">
 	<div class="yourBookings">
-		<h2>Your bookings</h2>
+		<h2>${message:heading.yourBookings}</h2>
 		<ul id="your-bookings" xml:space="preserve">
 			<li t:type="loop" t:source="bookings" t:value="current">
 				${current?.hotel?.name} (${current?.hotel?.address},

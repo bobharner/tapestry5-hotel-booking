@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html t:type="layout" t:title="Tapestry5-hotel-booking Sign In"
       t:pageTitle="Members login"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
-	<h2>Sign into your account</h2>
+	<h2>${message:heading.signIn}</h2>
 
 	<div class="alert alert-warning">
 		Note: this is a demonstration site. Feel free to log in here using a
@@ -14,23 +15,25 @@
 		<t:hidden value="target"/>
 		<t:errors />
 		<div class="form-group">
-			<label t:type="label" t:for="username" class="col-md-4">User name:</label>
+			<label t:type="label" t:for="username" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="textfield" t:id="username" t:validate="username"/>
-				<div class="hint">Hint: try <tt>cordenier</tt></div>
+				<div class="hint">${message:hintTryThese} <tt>cordenier</tt></div>
 			</div>
 		</div>
 		<div class="form-group">
-				<label t:type="label" t:for="password" class="col-md-4">Password:</label>
+				<label t:type="label" t:for="password" class="col-md-4"/>
 			<div class="col-md-8">
 				<input type="password" t:type="passwordfield" t:id="password" t:validate="password"/>
-					<div class="hint">Hint: try <tt>cordenier</tt></div>
+					<div class="hint">${message:hintTryThese} <tt>cordenier</tt></div>
 			</div>
 		</div>
 
 		<div class="col-md-offset-4 col-md-8">
-			<input type="submit" value="Log in" class="btn btn-default"/>
-			<div class="member">Need an account? <t:pagelink page="SignUp" context="target">Register now!</t:pagelink></div>
+			<input type="submit" value="${message:nav.login}" class="btn btn-default"/>
+			<div class="member">${message:needAnAccount}
+				<t:pagelink page="SignUp" context="target">${message:registerNow}</t:pagelink>
+			</div>
 		</div>
 		
 	 

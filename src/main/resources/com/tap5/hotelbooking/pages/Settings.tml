@@ -3,46 +3,47 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
-	<h2>Settings &mdash; Change your password</h2>
+	<h2>${message:nav.settings} &mdash; ${message:changeYourPassword}</h2>
 
 	<form class="form-horizontal" t:id="settingsForm">
 
 		<t:errors/>
 
 		<div class="form-group">
-			<label class="control-label col-md-4">User Name</label>
+			<label class="control-label col-md-4">${message:username-label}</label>
 			<div class="col-md-8">
 				${userName}
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label t:type="label" t:for="oldPassword" class="col-md-4">Old Password:*</label>
+			<label t:type="label" t:for="oldPassword" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="passwordField" t:id="oldPassword" t:validate="password"
-					placeholder="current password"/>
+					placeholder="${message:oldPassword-label}"/>
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label t:type="label" t:for="newPassword" class="col-md-4">New Password:*</label>
+			<label t:type="label" t:for="newPassword" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="passwordField" t:id="newPassword" t:validate="password"
-					placeholder="desired new password"/>
+					placeholder="${message:newPassword-label}"/>
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label t:type="label" t:for="verifyPassword" class="col-md-4">Verify Password:*</label>
+			<label t:type="label" t:for="verifyPassword" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="passwordField" t:id="verifyPassword" t:validate="password"
-					placeholder="desired new password (again)"/>
+					placeholder="${message:newPassword-label}"/>
 			</div>
 		</div>
 
 		<div class="col-md-offset-4 col-md-8">
-			<input type="submit" value="Save" class="btn btn-default"/> or 
-			<t:pageLink page="index">Cancel</t:pageLink>
+			<input type="submit" value="${message:button.save}" class="btn btn-default"/>
+			${message:or} 
+			<t:pageLink page="index">${message:button.cancel}</t:pageLink>
 		</div>
 	
 	</form>

@@ -26,21 +26,21 @@
 				<t:errors />
 
 				<div class="form-group">
-					<label t:type="label" t:for="checkinDate" class="col-md-4">Check In Date</label>
+					<label t:type="label" t:for="checkInDate" class="col-md-4"/>
 					<div class="col-md-8">
-							<input t:type="datefield" t:id="checkinDate" t:value="booking.checkinDate"/>
+							<input t:type="datefield" t:id="checkInDate" t:value="booking.checkinDate"/>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label t:type="label" t:for="checkoutDate" class="col-md-4">Check Out Date</label>
+					<label t:type="label" t:for="checkOutDate" class="col-md-4"/>
 					<div class="col-md-8">
-						<input t:type="datefield" t:id="checkoutDate" t:value="booking.checkoutDate"/>
+						<input t:type="datefield" t:id="checkOutDate" t:value="booking.checkoutDate"/>
 					</div>	
 				</div>
 
 				<div class="form-group">
-					<label t:type="label" t:for="roomPreference" class="col-md-4">Room Preference</label>
+					<label t:type="label" t:for="roomPreference" class="col-md-4"/>
 					<div class="col-md-8">
 							<select t:type="select" t:id="roomPreference" t:value="booking.beds" t:model="bedType">
 							</select>
@@ -48,12 +48,12 @@
 				</div>
 
 				<div class="form-group">
-					<label t:type="label" t:for="smoking" class="col-md-4">Smoking</label>
+					<label t:type="label" t:for="smoking" class="col-md-4"/>
 					<div class="col-md-8">
 						<t:radiogroup t:id="smoking" t:value="booking.smoking">
 							<div class="checkbox-inline">
 								<t:radio t:id="smoke" t:value="literal:true"/>
-								<t:label for="smoke"/>
+								<t:label for="smoke">${message:smoking-label}</t:label>
 							</div>
 							<div class="checkbox-inline">
 								<t:radio t:id="nosmoke" t:value="literal:false"/>
@@ -64,7 +64,7 @@
 				</div>
 
 				<div class="form-group">
-					<label t:type="label" t:for="creditCardNumber" class="col-md-4">Credit Card Number</label>
+					<label t:type="label" t:for="creditCardNumber" class="col-md-4"/>
 					<div class="col-md-8">
 						<input t:type="textfield" t:id="creditCardNumber" t:value="booking.creditCardNumber"
 							placeholder="NNNNNNNNNNNNNNNN"/>
@@ -75,7 +75,7 @@
 				</div>
 
 				<div class="form-group">
-					<label t:type="label" t:for="creditCardType" class="col-md-4">Credit Card Type</label>
+					<label t:type="label" t:for="creditCardType" class="col-md-4"/>
 					<div class="col-md-8">
 						<select t:type="select" t:id="creditCardType" t:value="booking.creditCardType">
 						</select>
@@ -83,7 +83,7 @@
 				</div>
 
 				<div class="form-group">
-					<label t:type="label" t:for="creditCardName" class="col-md-4">Name on Card</label>
+					<label t:type="label" t:for="creditCardName" class="col-md-4"/>
 					<div class="col-md-8">
 							<input t:type="textfield" t:id="creditCardName" class="form-control"
 								t:value="booking.creditCardName"/>
@@ -103,9 +103,9 @@
 				</div>
 
 				<div class="col-md-offset-4 col-md-8">
-					<input type="submit" class="btn btn-default" value="Book this hotel..." />
-					or
-					<a href="#" t:type="eventlink" t:event="cancelBooking">Cancel</a>
+					<input type="submit" class="btn btn-default" value="${message:button.book}..." />
+					${message:or}
+					<a href="#" t:type="eventlink" t:event="cancelBooking">${message:button.cancel}</a>
 				</div>
 			</form>
 		</t:block>
@@ -120,9 +120,9 @@
 			<form class="full-form" t:type="form" t:id="confirmForm">
 				<t:errors />				
 				<div class="form-submit">
-					<input type="submit" class="btn btn-default" value="Confirm" />
+					<input type="submit" class="btn btn-default" value="${message:button.confirm}" />
 					or
-					<a href="#" t:type="eventlink" t:event="cancelConfirm">Change</a>
+					<a href="#" t:type="eventlink" t:event="cancelConfirm">${message:button.change}</a>
 				</div>
 			</form>
 

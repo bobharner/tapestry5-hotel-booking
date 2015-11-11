@@ -8,22 +8,22 @@
 		<div class="row">
 			<ul class="topnav">
 				<t:security.authenticated>
-					<li><span>Welcome ${user?.fullName}</span></li>
+					<li><span>${welcomeMessage}</span></li>
 					<li>
-						<a href="#" t:type="pageLink" t:page="index">Find a Hotel</a>
+						<a href="#" t:type="pageLink" t:page="index">${message:nav.findAHotel}</a>
 					</li>
 					<li>
-						<a href="#" t:type="pageLink" t:page="settings">Settings</a>
+						<a href="#" t:type="pageLink" t:page="settings">${message:nav.settings}</a>
 					</li>
 					<li class="last">
-						<a href="#" t:type="actionlink" t:id="logout" id="logout">Log out</a>
+						<a href="#" t:type="actionlink" t:id="logout" id="logout">${message:nav.logout}</a>
 					</li>
 					<p:else>
 						<li>
-							<a href="#" t:type="pageLink" t:page="index">Find a Hotel</a>
+							<a href="#" t:type="pageLink" t:page="index">${message:nav.findAHotel}</a>
 						</li>
 						<li class="last">
-							<t:pageLink page="signin">Log in</t:pageLink>
+							<t:pageLink page="signin">${message:nav.login}</t:pageLink>
 						</li>
 				</p:else>
 				</t:security.authenticated>
@@ -34,7 +34,7 @@
 
 			<h1><img src="${context:/static/tapestry_s.png}" alt="Tapestry" id="tapestry" /></h1>
 
-			<div id="aside">Welcome to Tapestry's Hotel Booking demonstration</div>
+			<div id="aside">${message:nav.welcomeToDemo}</div>
 			
 			<div class="clearer"></div>
 
@@ -42,9 +42,7 @@
 		
 		<div id="bar" class="row">
 			<t:alerts showDismissAll="false" class="alerts"/>
-			<strong>This is a demo app, introducing basic
-			<a href="http://tapestry.apache.org/">Apache Tapestry</a>
-			functionality in the form of hotel booking simulation.</strong>
+			<strong>${message:nav.thisIsADemoApp}</strong>
 		</div>
 
 

@@ -75,12 +75,14 @@ public class Book
     }
     
     /**
-     * Get a heading string to display at the top of the page
-     * @return the heading string
+     * Get a heading string to display at the top of the page. This varies
+     * depending on what step we're at.
+     * @return the heading string, potentially localized
      */
     public String getHeading()
     {
-        return confirmationStep ? "Please confirm the following" : "Book this room";
+        String key = confirmationStep ? "heading.pleaseConfirm" : "heading.bookThisRoom";
+        return messages.get(key);
     }
 
     public String getSecuredCardNumber()
@@ -124,12 +126,12 @@ public class Book
         calendar.add(Calendar.DAY_OF_MONTH, -1);
         if (booking.getCheckinDate().before(calendar.getTime()))
         {
-            bookingForm.recordError(messages.get("booking_checkInNotFutureDate"));
+            bookingForm.recordError(messages.get("error.checkInNotFutureDate"));
             return;
         }
         else if (!booking.getCheckinDate().before(booking.getCheckoutDate()))
         {
-            bookingForm.recordError(messages.get("booking_checkOutBeforeCheckIn"));
+            bookingForm.recordError(messages.get("error.checkOutBeforeCheckIn"));
             return;
         }
 
