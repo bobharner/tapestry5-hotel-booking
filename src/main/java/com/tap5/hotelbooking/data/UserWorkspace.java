@@ -20,16 +20,29 @@ public class UserWorkspace
 
     private List<Booking> notConfirmed = new ArrayList<Booking>();
 
+    /**
+     * Get the list of bookings that are not yet confirmed
+     * @return the list, possibly empty
+     */
     public List<Booking> getNotConfirmed()
     {
         return notConfirmed;
     }
 
+    /**
+     * Get the currently-in-progress booking, if any
+     * @return the booking, or null if none
+     */
     public Booking getCurrent()
     {
         return current;
     }
 
+    /**
+     * Start booking the given hotel for the given user
+     * @param hotel the hotel to book
+     * @param user the current user
+     */
     public void startBooking(Hotel hotel, User user)
     {
         Booking booking = new Booking(hotel, user, 1, 1);
@@ -37,12 +50,12 @@ public class UserWorkspace
         notConfirmed.add(booking);
     }
 
-    private void removeCurrentBooking(Booking booking)
-    {
-        notConfirmed.remove(booking);
-        this.current = null;
-    }
-
+    /**
+     * Re-activate the booking with the given ID if it is found in the list of
+     * in-progress bookings
+     * @param bookId the id of the booking to reactivate
+     * @return the reactivated booking, or null if none was found
+     */
     public Booking restoreBooking(Long bookId)
     {
         Booking restoredBooking = null;
@@ -61,14 +74,33 @@ public class UserWorkspace
         return restoredBooking;
     }
 
+    /**
+     * Remove the given booking from the list of in-progress bookings
+     * @param booking the booking to cancel
+     */
     public void cancelCurrentBooking(Booking booking)
     {
         removeCurrentBooking(booking);
     }
 
+    /**
+     * Confirm the given booking (and remove it from the list of in-progress
+     * bookings
+     * @param booking the booking to confirm
+     */
     public void confirmCurrentBooking(Booking booking)
     {
         removeCurrentBooking(booking);
+    }
+
+    /**
+     * Remove the given booking from the list of in-progress bookings
+     * @param booking the booking to remove
+     */
+    private void removeCurrentBooking(Booking booking)
+    {
+        notConfirmed.remove(booking);
+        this.current = null;
     }
 
 }
