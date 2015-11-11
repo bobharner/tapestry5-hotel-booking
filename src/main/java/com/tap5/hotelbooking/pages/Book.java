@@ -7,8 +7,11 @@ import com.tap5.hotelbooking.data.UserWorkspace;
 import com.tap5.hotelbooking.data.Years;
 import com.tap5.hotelbooking.entities.Booking;
 import com.tap5.hotelbooking.entities.Hotel;
+import com.tap5.hotelbooking.services.Authenticator;
+
 import org.apache.tapestry5.Block;
 import org.apache.tapestry5.EventConstants;
+import org.apache.tapestry5.EventContext;
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.*;
@@ -44,6 +47,9 @@ public class Book
 
     @Inject
     private CrudServiceDAO dao;
+
+    @Inject
+    private Authenticator authenticator;
 
     @InjectComponent
     private Form bookingForm;
@@ -91,10 +97,26 @@ public class Book
         return booking.getCreditCardNumber().substring(12);
     }
 
+    @OnEvent(value = EventConstants.ACTIVATE)
     @Log
-    public Object onActivate(Long hotelId)
+    public Object setupBooking(EventContext eventContext)
     {
-        booking = userWorkspace.restoreBooking(hotelId);
+        // check whether the activation context (URL path) has any hotel id in it
+        if (eventContext.getCount() == 0) // no activation parameter
+        {
+            booking = userWorkspace.getCurrent();
+            if (booking==null) {
+                confirmationStep = false;
+            } else {
+                confirmationStep = booking.getStatus();
+            }
+        }
+        else
+        {
+            // a booking ID was given, so reactivate it
+            Long hotelId = eventContext.get(Long.class, 0);
+            booking = userWorkspace.restoreBooking(hotelId);
+        }
 
         if (booking == null)
         {
@@ -102,26 +124,22 @@ public class Book
         }
         else
         {
+            if (!booking.hasUser() && authenticator.isLoggedIn())
+            {
+                booking.setUser(authenticator.getLoggedUser());
+            }
             confirmationStep = booking.getStatus();
             return null;
-        }
-    }
-
-    @OnEvent(value = EventConstants.ACTIVATE)
-    @Log
-    public void setupBooking()
-    {
-        booking = userWorkspace.getCurrent();
-        if (booking==null) {
-            confirmationStep = false;
-        } else {
-            confirmationStep = booking.getStatus();
         }
     }
 
     @OnEvent(value = EventConstants.VALIDATE, component = "bookingForm")
     public void validateBooking()
     {
+        if (!booking.hasUser())
+        {
+            throw new RuntimeException("Can't save booking because user is unknown");
+        }
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_MONTH, -1);
         if (booking.getCheckinDate().before(calendar.getTime()))

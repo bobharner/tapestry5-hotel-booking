@@ -89,11 +89,7 @@ public class Booking implements Serializable
     public Booking(Hotel hotel, User user, int daysFromNow, int nights)
     {
         this.hotel = hotel;
-        this.user = user;
-        if (user != null)
-        {
-            this.creditCardName = user.getFullname();
-        }
+        setUser(user);
         this.smoking = false;
         this.beds = 1;
         setReservationDates(daysFromNow, nights);
@@ -145,9 +141,18 @@ public class Booking implements Serializable
         return user;
     }
 
+    /**
+     * Set this booking's user to the given user (and set the credit
+     * card name to the user's name, if it isn't already set to something
+     * else)
+     */
     public void setUser(User user)
     {
         this.user = user;
+        if (hasUser() && creditCardName == null)
+        {
+            this.creditCardName = user.getFullname();
+        }
     }
 
     @NotNull
@@ -312,6 +317,15 @@ public class Booking implements Serializable
     public void setStatus(Boolean status)
     {
         this.status = status;
+    }
+
+    /**
+     * Determine whether this booking has a known (logged in) user associated with it
+     * @return true if there is a user, false otherwise
+     */
+    public boolean hasUser()
+    {
+        return getUser() != null;
     }
 
     @Override
