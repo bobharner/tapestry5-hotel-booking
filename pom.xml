@@ -228,7 +228,7 @@
 
     <!-- https://github.com/martialsauvette/tapestry5-hotel-booking/commit/d336ad8dc18a583cc6fd128162f20eb7e1679124 -->
     <properties>
-		<tapestry-release-version>5.4-beta-35</tapestry-release-version>
+		<tapestry-release-version>5.4-rc-1</tapestry-release-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 </project>
