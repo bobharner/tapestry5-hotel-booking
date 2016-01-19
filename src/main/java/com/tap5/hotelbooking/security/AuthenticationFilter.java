@@ -129,3 +129,4 @@ public class AuthenticationFilter implements ComponentRequestFilter
         response.sendRedirect(link);
     }
 }
+
