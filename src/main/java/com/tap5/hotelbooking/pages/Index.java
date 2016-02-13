@@ -75,7 +75,7 @@ public class Index
     }
 
     /**
-     * Move this into a hotel query service
+     * TODO: Move this into a hotel query service
      */
     @OnEvent(value = EventConstants.SUCCESS)
     Object searchHotels()

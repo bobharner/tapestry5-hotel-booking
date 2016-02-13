@@ -56,9 +56,9 @@
         </p>
         <p>The overall layout of <em>all</em> pages in the app (the common header
            and footer elements, for example) is controlled by the
-           Layout.tml template. This page explicitly wraps itself in the Layout
-           component by specifying &lt;html t:type="layout".../&gt; at the top
-           of its template file.
+           Layout.tml template. This page (like most of the others) explicitly
+           wraps itself in the Layout component by specifying
+           &lt;html t:type="layout".../&gt; at the top of its template file.
         </p>
         <p>
             This page uses Tapestry's <em>Form</em> component, taking advantage of its
@@ -68,7 +68,7 @@
             JavaScript if you don't want to.
         </p>
         <p>The &lt;t:zone&gt; component in this page's template file (Index.tml)
-            contains the HTML elements for the layout of content within the zone.
+            surrounds the HTML elements for the layout of content within the zone.
             In this case, those HTML elements consist of an HTML table produced by
             Tapestry's built-in <a href="http://tapestry.apache.org/current/apidocs/org/apache/tapestry5/corelib/components/Grid.html">Grid</a>
             component (which only appears when there are search results to display).
