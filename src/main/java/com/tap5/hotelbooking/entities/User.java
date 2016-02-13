@@ -66,6 +66,12 @@ public class User
     {
     }
 
+    /**
+     * Construct a user
+     * @param fullname the full name (e.g. "John Smith")
+     * @param username the username
+     * @param email the email address
+     */
     public User(final String fullname, final String username, final String email)
     {
         this.fullname = fullname;
@@ -73,6 +79,13 @@ public class User
         this.email = email;
     }
 
+    /**
+     * Construct a new user using an already-encrypted password
+     * @param fullname the full name (e.g. "John Smith")
+     * @param username the username
+     * @param email the email address
+     * @param password the password (already encrypted)
+     */
     public User(final String fullname, final String username, final String email,
             final String password)
     {
@@ -80,6 +93,14 @@ public class User
         this.password = password;
     }
 
+    /**
+     * Construct a user using an already-known database ID
+     * @param id the database ID (primary key)
+     * @param fullname the full name (e.g. "John Smith")
+     * @param username the username
+     * @param email the email address
+     * @param password the password (already encrypted)
+     */
     public User(Long id, String username, String fullname, String email, String password)
     {
         super();

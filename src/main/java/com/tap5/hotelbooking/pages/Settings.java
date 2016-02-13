@@ -11,6 +11,7 @@ import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import com.tap5.hotelbooking.dal.CrudServiceDAO;
+import com.tap5.hotelbooking.data.DemoUser;
 import com.tap5.hotelbooking.entities.User;
 import com.tap5.hotelbooking.security.AuthenticationException;
 import com.tap5.hotelbooking.services.Authenticator;
@@ -66,6 +67,13 @@ public class Settings
         }
 
         User user = authenticator.getLoggedUser();
+
+        // prevent users from changing the out-of-the-box account passwords
+        if (DemoUser.isDemoUser(user.getUsername())) {
+            settingsForm.recordError(messages.get("error.unchangeableAccounts"));
+            return null;
+        }
+
         // update the password
         user.setPassword(authenticator.encryptPassword(newPassword));
         crudServiceDAO.update(user);

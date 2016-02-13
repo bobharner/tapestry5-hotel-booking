@@ -8,6 +8,7 @@ import org.apache.tapestry5.ioc.annotations.Startup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.tap5.hotelbooking.data.DemoUser;
 import com.tap5.hotelbooking.entities.Hotel;
 import com.tap5.hotelbooking.entities.User;
 import com.tap5.hotelbooking.security.AuthenticationException;
@@ -40,10 +41,11 @@ public class DataModule
         List<Hotel> hotels = new ArrayList<Hotel>();
         List<User> users = new ArrayList<User>();
 
-        users.add(new User("Christophe Cordenier", "cordenier", "ccordenier@example.com",
-                authenticator.encryptPassword("cordenier")));
-        users.add(new User("Katia Aresti", "karesti", "karesti@example.com",
-                authenticator.encryptPassword("karesti")));
+        // create an account for each member of the DemoUser enum
+        for (DemoUser u : DemoUser.values()) {
+            users.add(new User(u.getFullname(), u.getUsername(), u.getEmail(),
+                    authenticator.encryptPassword(u.getPassword())));
+        }
 
         hotels.add(new Hotel(129, 3, "Marriott Courtyard", "Tower Place, Buckhead", "Atlanta",
                 "GA", "30305", "USA"));

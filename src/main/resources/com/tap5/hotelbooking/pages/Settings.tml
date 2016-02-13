@@ -1,13 +1,15 @@
+<!DOCTYPE html>
 <html t:type="layout" title="Tapestry5-hotel-booking Settings"
       t:pageTitle="Change your password"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
-	<h2>${message:nav.settings} &mdash; ${message:changeYourPassword}</h2>
+	<h2>${message:nav.settings} - ${message:changeYourPassword}</h2>
 
 	<form class="form-horizontal" t:id="settingsForm">
 
 		<t:errors/>
+		
 
 		<div class="form-group">
 			<label class="control-label col-md-4">${message:username-label}</label>

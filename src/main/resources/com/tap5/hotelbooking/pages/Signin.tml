@@ -18,8 +18,8 @@
 			<label t:type="label" t:for="username" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="textfield" t:id="username" t:validate="username"/>
-				<div class="hint">${message:hintTryThese} <tt>cordenier</tt>
-					${message:or} <tt>karesti</tt>
+				<div class="hint">${message:hintTryThese} <tt>${demo1Username}</tt>
+					${message:or} <tt>${demo2Username}</tt>
 				</div>
 			</div>
 		</div>
@@ -27,8 +27,8 @@
 				<label t:type="label" t:for="password" class="col-md-4"/>
 			<div class="col-md-8">
 				<input type="password" t:type="passwordfield" t:id="password" t:validate="password"/>
-					<div class="hint">${message:hintTryThese} <tt>cordenier</tt>
-					${message:or} <tt>karesti</tt>
+					<div class="hint">${message:hintTryThese} <tt>${demo1Password}</tt>
+					${message:or} <tt>${demo2Password}</tt>
 				</div>
 			</div>
 		</div>

@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.tap5.hotelbooking.annotations.AnonymousAccess;
+import com.tap5.hotelbooking.data.DemoUser;
 import com.tap5.hotelbooking.security.AuthenticationException;
 import com.tap5.hotelbooking.services.Authenticator;
 
@@ -93,4 +94,23 @@ public class Signin
         return Index.class;
     }
 
+    public String getDemo1Username()
+    {
+        return DemoUser.ACCOUNT_1.getUsername();
+    }
+
+    public String getDemo2Username()
+    {
+        return DemoUser.ACCOUNT_2.getUsername();
+    }
+
+    public String getDemo1Password()
+    {
+        return DemoUser.ACCOUNT_1.getPassword();
+    }
+
+    public String getDemo2Password()
+    {
+        return DemoUser.ACCOUNT_2.getPassword();
+    }
 }
