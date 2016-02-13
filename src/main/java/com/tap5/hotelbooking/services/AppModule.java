@@ -1,8 +1,11 @@
 package com.tap5.hotelbooking.services;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
+import org.apache.tapestry5.ComponentResources;
+import org.apache.tapestry5.Link;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
@@ -13,6 +16,9 @@ import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
 import org.apache.tapestry5.services.ComponentRequestFilter;
 import org.apache.tapestry5.services.ComponentRequestHandler;
+import org.apache.tapestry5.services.ComponentSource;
+import org.apache.tapestry5.services.RequestExceptionHandler;
+import org.apache.tapestry5.services.Response;
 import org.apache.tapestry5.validator.ValidatorMacro;
 
 import com.tap5.hotelbooking.dal.DataModule;
@@ -60,6 +66,11 @@ public class AppModule
 
         // use jquery instead of prototype as foundation JS library
         configuration.add(SymbolConstants.JAVASCRIPT_INFRASTRUCTURE_PROVIDER, "jquery");
+        
+        // false turns off switching between HTTP and HTTPS (ignoring @Secure
+        // annotations), so if app is served under HTTP it will stay that way,
+        // and if served under HTTPS it will also stay that way, for all pages
+        configuration.add(SymbolConstants.SECURE_ENABLED, "false");
     }
 
     @Contribute(ValidatorMacro.class)
@@ -74,5 +85,33 @@ public class AppModule
             OrderedConfiguration<ComponentRequestFilter> configuration)
     {
         configuration.addInstance("RequiresLogin", AuthenticationFilter.class);
+    }
+    
+    /**
+     * Redirect the user to the intended page when browsing through
+     * tapestry forms through browser history or over-eager auto-complete
+     * Credit to Lenny Primak.
+     */
+    public RequestExceptionHandler decorateRequestExceptionHandler(
+            final ComponentSource componentSource,
+            final Response response,
+            final RequestExceptionHandler oldHandler)
+    {
+        return new RequestExceptionHandler()
+        {
+            @Override
+            public void handleRequestException(Throwable exception) throws IOException
+            {
+                if (!exception.getMessage().contains("Forms require that the request method be POST and that the t:formdata query parameter have values"))
+                {
+                    oldHandler.handleRequestException(exception);
+                    return;
+                }
+                ComponentResources cr = componentSource.getActivePage().getComponentResources();
+                Link link = cr.createEventLink("");
+                String uri = link.toRedirectURI().replaceAll(":", "");
+                response.sendRedirect(uri);
+            }
+        };
     }
 }
