@@ -22,5 +22,5 @@ The following are two built-in accounts (usernames / passwords) that you can
 use to log into the app, or you can create another account by registering with
 the link on the login page.
 
-* cordenier/cordenier
-* karesti/karesti
+* gosling/gosling
+* fowler/fowler
