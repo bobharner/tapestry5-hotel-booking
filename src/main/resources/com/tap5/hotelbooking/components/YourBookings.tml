@@ -1,5 +1,5 @@
 <!DOCTYPE html [
-  <!ENTITY ndash "#8211">
+  <!ENTITY ndash "&#8211;">
 ]>
 <t:container xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
 	
@@ -12,7 +12,7 @@
 				${current?.hotel?.city} ${current?.hotel?.state}
 				${current?.hotel?.country})
 				arriving ${current?.checkinDate}, departing ${current?.checkoutDate}
-				&ndash; <a hraf="#" t:type="eventlink" t:context="current" t:event="cancelBooking">Cancel</a>
+				&ndash; <a href="#" t:type="eventlink" t:context="current" t:event="cancelBooking">Cancel</a>
 			</li>
 		</ul>
 	</div>
