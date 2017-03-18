@@ -13,10 +13,12 @@ import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.ImportModule;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
+import org.apache.tapestry5.ioc.services.ServiceOverride;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
 import org.apache.tapestry5.services.ComponentRequestFilter;
 import org.apache.tapestry5.services.ComponentRequestHandler;
 import org.apache.tapestry5.services.ComponentSource;
+import org.apache.tapestry5.services.ExceptionReporter;
 import org.apache.tapestry5.services.RequestExceptionHandler;
 import org.apache.tapestry5.services.Response;
 import org.apache.tapestry5.validator.ValidatorMacro;
@@ -57,6 +59,7 @@ public class AppModule
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en,es");
         configuration.add(SymbolConstants.APPLICATION_VERSION, "2.0-SNAPSHOT");
         configuration.add(SymbolConstants.PRODUCTION_MODE, "true");
+        configuration.add(SymbolConstants.RESTRICTIVE_ENVIRONMENT, "true");
 
         // Generate a random HMAC key for form signing (not cluster safe).
         // Normally it would be better to use a fixed password-like string, but
@@ -86,7 +89,7 @@ public class AppModule
     {
         configuration.addInstance("RequiresLogin", AuthenticationFilter.class);
     }
-    
+
     /**
      * Redirect the user to the intended page when browsing through
      * tapestry forms through browser history or over-eager auto-complete
@@ -102,7 +105,7 @@ public class AppModule
             @Override
             public void handleRequestException(Throwable exception) throws IOException
             {
-                if (!exception.getMessage().contains("Forms require that the request method be POST and that the t:formdata query parameter have values"))
+                if (exception.getMessage() == null || !exception.getMessage().contains("Forms require that the request method be POST and that the t:formdata query parameter have values"))
                 {
                     oldHandler.handleRequestException(exception);
                     return;
