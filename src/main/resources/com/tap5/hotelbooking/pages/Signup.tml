@@ -78,8 +78,8 @@
 	</form>
 
 	<p:sidebar>
-		<p>This page (Signup.tml/Signup.java) consists of a form with a simple
-		HTML table, and labels and form fields. Unlike on the home page, this
+		<p>This page (Signup.tml/Signup.java) consists of a form with
+		Bootstrap-formatted labels and form fields. Unlike on the home page, this
 		form does <em>not</em> use Ajax and zones. It's a regular HTML form.
 		</p>
 		<p>The CAPTCHA image is produced by the Kaptcha component (&lt;t:kaptcha&gt;),
