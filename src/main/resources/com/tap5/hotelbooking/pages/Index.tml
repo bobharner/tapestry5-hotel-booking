@@ -4,7 +4,7 @@
 
 	<h2>${message:nav.findAHotel}</h2>
 
-	<form t:type="form" t:zone="result" t:id="searchForm" class="form-horizontal" >
+	<form t:type="form" async="true" t:id="searchForm" class="form-horizontal" >
 		<div class="form-group">
 			<label t:type="label" t:for="query" class="col-md-4"/>
 			<div class="col-md-8">
@@ -29,9 +29,10 @@
 
 	<!-- Result area -->
 	<div class="clearer"></div>
-	<div class="section result">
-		<t:zone t:id="result" id="result">
-			<t:grid t:source="source" t:inPlace="true" t:rowsPerPage="criteria.rowsPerPage" t:include="name,address,zip" t:add="cityState,action" t:row="currentHotel">
+		<div class="section result" id="resultArea">
+			<t:grid t:id="resultTable" id="resultTable" t:source="source" t:inPlace="true"
+					t:rowsPerPage="criteria.rowsPerPage" t:include="name,address,zip"
+					t:add="cityState,action" t:row="currentHotel">
 				<p:actionCell><t:pagelink t:context="currentHotel" t:page="view">Details</t:pagelink></p:actionCell>
 				<p:cityStateCell>${currentHotel.city}, ${currentHotel.state}</p:cityStateCell>
 				<p:empty>
@@ -40,8 +41,7 @@
 					</t:if>
 				</p:empty>
 			</t:grid>
-		</t:zone>
-	</div>
+		</div>
 
 	<t:shoppingCart />
 	
@@ -62,13 +62,20 @@
         </p>
         <p>
             This page uses Tapestry's <em>Form</em> component, taking advantage of its
-            <a href="http://tapestry.apache.org/ajax-and-zones.html">zones</a> feature.
-            With zones, when you "submit" the form, Tapestry-supplied JavaScript submits an AJAX request to the
-            server and gets back HTML that is inserted into the page dynamically. You don't have to write any
-            JavaScript if you don't want to.
+            <a href="http://tapestry.apache.org/ajax-and-zones.html">async</a> feature.
+            When you "submit" the form, Tapestry-supplied JavaScript submits an AJAX
+            request to the server and gets back a JSON object containg one or more
+            blocks of HTML, and updates just those portions of the page.
+        </p>
+        <p>
+            <b>You don't write any JavaScript (unless you want to).</b>
+        </p>
+        <p>Surprisingly, the app works just fine <em>without</em> JavaScript too,
+           which is good for SEO and accessibility.
         </p>
         <p>The &lt;t:zone&gt; component in this page's template file (Index.tml)
-            surrounds the HTML elements for the layout of content within the zone.
+            surrounds the HTML elements for the layout of content within the area
+            to be updated.
             In this case, those HTML elements consist of an HTML table produced by
             Tapestry's built-in <a href="http://tapestry.apache.org/current/apidocs/org/apache/tapestry5/corelib/components/Grid.html">Grid</a>
             component (which only appears when there are search results to display).
