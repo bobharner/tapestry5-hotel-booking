@@ -9,7 +9,7 @@
     <name>tapestry5-hotel-booking Tapestry 5 Application</name>
 
     <properties>
-		<tapestry-release-version>5.4.0</tapestry-release-version>
+		<tapestry-release-version>5.4.1</tapestry-release-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
