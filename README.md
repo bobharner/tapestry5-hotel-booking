@@ -3,7 +3,7 @@
 This is the source code to the "Hotel Booking" Tapestry demo app, currently
 running with Tapestry 5.4 at:
 
-	http://tapestry-vm.apache.org:8080/hotels/
+	https://tapestry-app.apache.org/hotels/
 
 This is Tapestry's take on a classic "Hotel Booking" application (ala Seam). It
 demonstrates simple page navigation, form validation and submission, session
@@ -22,5 +22,5 @@ The following are two built-in accounts (usernames / passwords) that you can
 use to log into the app, or you can create another account by registering with
 the link on the login page.
 
-* cordenier/cordenier
-* karesti/karesti
+* gosling/gosling
+* fowler/fowler
