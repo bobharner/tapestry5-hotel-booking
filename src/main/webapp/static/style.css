@@ -159,7 +159,7 @@ DIV.hint TT {
 	font-weight: bold;
 }
 DIV.shoppingCart, DIV.yourBookings {
-	margin: 2em 0;
+	margin: 5em 0;
 	border: 1px solid #ccc;
 	padding: 1em;
 }

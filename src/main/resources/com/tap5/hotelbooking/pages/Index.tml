@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<div class="col-md-offset-4 col-md-8">
-			<input type="submit" t:type="submit" class="btn btn-default" value="${message:findMatchingHotels}" />
+			<input type="submit" t:type="submit" class="btn btn-primary" value="${message:findMatchingHotels}" />
 			<span t:type="ajaxloader" t:trigger="searchForm" t:zone="result"></span>
 		</div>
 	</form>
