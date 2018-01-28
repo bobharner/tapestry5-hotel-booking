@@ -31,12 +31,13 @@
 	<div class="clearer"></div>
 		<div class="section result" id="resultArea">
 			<t:grid t:id="resultTable" id="resultTable" t:source="source" t:inPlace="true"
-					t:rowsPerPage="criteria.rowsPerPage" t:include="name,address,zip"
-					t:add="cityState,action" t:row="currentHotel">
-				<p:actionCell><t:pagelink t:context="currentHotel" t:page="view">Details</t:pagelink></p:actionCell>
+					t:rowsPerPage="criteria.rowsPerPage" t:include="name,address,city,state,stars"
+					t:row="currentHotel">
+				<p:nameCell><t:pagelink t:context="currentHotel" t:page="view">${currentHotel.name}</t:pagelink></p:nameCell>
 				<p:cityStateCell>${currentHotel.city}, ${currentHotel.state}</p:cityStateCell>
+				<p:starsCell><t:hotelRating stars="currentHotel.stars"/></p:starsCell>
 				<p:empty>
-					<t:if test="criteria.query">
+					<t:if test="criteria.query">	
 						<p class="empty-result">${message:no-result}</p>
 					</t:if>
 				</p:empty>
@@ -92,7 +93,7 @@
             Also, we're using the Grid component's built-in partial refresh option ("inPlace")
             that allows pagination and sorting to occur without redrawing the whole page.
         </p>
-        <p>Finally, the "Details" link in each row is built with Tapestry's
+        <p>Finally, the links in the first column are built with Tapestry's
            <a href="http://tapestry.apache.org/current/apidocs/org/apache/tapestry5/corelib/components/PageLink.html">PageLink</a>
            component, which in this case constructs a URL that includes an "activation context"
            (the part of the URL after the page name) consisting of the primary key of
