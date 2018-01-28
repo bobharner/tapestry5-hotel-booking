@@ -22,8 +22,9 @@ public class BedType extends AbstractSelectModel
     public BedType()
     {
         options.add(new OptionModelImpl("One king-sized bed", 1));
-        options.add(new OptionModelImpl("Two double beds", 2));
-        options.add(new OptionModelImpl("Three beds", 3));
+        options.add(new OptionModelImpl("Two queen beds", 2));
+        options.add(new OptionModelImpl("Two double beds", 3));
+        options.add(new OptionModelImpl("One queen beds", 2));
     }
 
     public List<OptionGroupModel> getOptionGroups()
