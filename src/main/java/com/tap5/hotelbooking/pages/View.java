@@ -1,5 +1,8 @@
 package com.tap5.hotelbooking.pages;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.PageActivationContext;
@@ -30,11 +33,42 @@ public class View
     @PageActivationContext
     private Hotel hotel;
 
+    @Property
+    private Date checkInDate, checkOutDate;
+
     @Inject
     private Authenticator authenticator;
 
     @Inject
     private CrudServiceDAO dao;
+
+    @OnEvent(value = EventConstants.PREPARE_FOR_RENDER)
+    void initializeForm()
+    {
+        if (checkInDate == null && checkOutDate == null)
+        {
+            setReservationDates(0, 1);
+        }
+    }
+
+
+    /**
+     * Initialize the check-in and check-out dates.
+     * 
+     * @param daysFromNow
+     *            Number of days the stay will begin from now
+     * @param nights
+     *            Length of the stay in number of nights
+     */
+    public void setReservationDates(int daysFromNow, int nights)
+    {
+        Calendar refDate = Calendar.getInstance();
+        refDate.set(refDate.get(Calendar.YEAR), refDate.get(Calendar.MONTH),
+                refDate.get(Calendar.DAY_OF_MONTH) + daysFromNow, 0, 0, 0);
+        checkInDate = refDate.getTime();
+        refDate.add(Calendar.DAY_OF_MONTH, nights);
+        checkOutDate = refDate.getTime();
+    }
 
     /**
      * Start booking process.
@@ -49,7 +83,7 @@ public class View
         if (authenticator.isLoggedIn()) {
             user = (User) dao.find(User.class, authenticator.getLoggedUser().getId());
         }
-        userWorkspace.startBooking(hotel, user);
+        userWorkspace.startBooking(hotel, user, checkInDate, checkOutDate);
         return Book.class;
     }
 }

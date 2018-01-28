@@ -2,16 +2,16 @@
 <html t:type="layout" t:pageTitle="Book your room"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
-        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+     <t:remove><!--
+     This is the template for the "Book" page, which handles the booking and
+     confirmation of a hotel reservation. Most of the peripheral content,
+     including <head>, <body>, etc. tags, comes from Layout.tml
+     -->
+     </t:remove>
 
 	<h2>${heading}</h2>
 
 	<t:if test="booking">
-
-		<div class="alert alert-warning">
-			Note: this is a demonstration site. Do not enter real credit card
-			information into this form.
-		</div>
 
 		<div class="hotel-details" t:type="beandisplay" t:object="booking.hotel" t:exclude="id" t:include="name,address,city,state,zip,country,price,stars">
 			<p:stars>
@@ -26,20 +26,6 @@
 				<t:errors />
 
 				<div class="form-group">
-					<label t:type="label" t:for="checkInDate" class="col-md-4"/>
-					<div class="col-md-8">
-							<input t:type="datefield" t:id="checkInDate" t:value="booking.checkinDate"/>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label t:type="label" t:for="checkOutDate" class="col-md-4"/>
-					<div class="col-md-8">
-						<input t:type="datefield" t:id="checkOutDate" t:value="booking.checkoutDate"/>
-					</div>	
-				</div>
-
-				<div class="form-group">
 					<label t:type="label" t:for="roomPreference" class="col-md-4"/>
 					<div class="col-md-8">
 							<select t:type="select" t:id="roomPreference" t:value="booking.beds" t:model="bedType">
@@ -47,67 +33,93 @@
 					</div>
 					<div class="col-md-offset-4 col-md-8" id="smoking-radios">
 						<t:radiogroup t:id="smoking" t:value="booking.smoking">
-							<div class="checkbox-inline">
-								<t:radio t:id="smoke" t:value="literal:true"/>
-								<t:label for="smoke">${message:smoking-label}</t:label>
-							</div>
-							<div class="checkbox-inline">
+							<div class="radio-inline">
 								<t:radio t:id="nosmoke" t:value="literal:false"/>
 								<t:label for="nosmoke"/>
+							</div>
+							<div class="radio-inline">
+								<t:radio t:id="smoke" t:value="literal:true" class=""/>
+								<t:label for="smoke">${message:smoking-label}</t:label>
 							</div>
 						</t:radiogroup>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label t:type="label" t:for="creditCardNumber" class="col-md-4"/>
+					<label t:type="label" t:for="paymentType" class="col-md-4"/>
 					<div class="col-md-8">
-						<input t:type="textfield" t:id="creditCardNumber" t:value="booking.creditCardNumber"
-							placeholder="NNNNNNNNNNNNNNNN"/>
-						<div class="hint">
-							Do not enter real credit card information into this form!
+						<t:radiogroup t:id="paymentType" value="booking.paymentType">
+							<label for="creditCard" class="radio-inline">
+								<t:radio t:id="creditCard" t:mixins="triggerfragment"
+										fragment="creditCardFields"/>
+								${message:creditCard-label}
+							</label>
+							<t:label for="bankAccount" class="radio-inline">
+								<t:radio t:id="bankAccount" t:mixins="triggerfragment"
+										fragment="bankAccountFields"/>
+								${message:bankAccount-label}
+							</t:label>
+						</t:radiogroup>
+					</div>
+				</div>
+
+				<t:formFragment t:id="creditCardFields" visible="payingWithCreditCard">
+					<div class="form-group">
+						<label t:type="label" t:for="creditCardNumber" class="col-md-4"/>
+						<div class="col-md-8">
+							<input t:type="textfield" t:id="creditCardNumber" t:value="booking.creditCardNumber"
+								placeholder="NNNNNNNNNNNNNNNN"/>
+							<div class="hint">
+								WARNING: Do not enter real credit card information into this form!
+							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="form-group">
-					<label t:type="label" t:for="creditCardType" class="col-md-4"/>
-					<div class="col-md-8">
-						<select t:type="select" t:id="creditCardType" t:value="booking.creditCardType">
-						</select>
-					</div>	
-				</div>
-
-				<div class="form-group">
-					<label t:type="label" t:for="creditCardName" class="col-md-4"/>
-					<div class="col-md-8">
-							<input t:type="textfield" t:id="creditCardName" class="form-control"
-								t:value="booking.creditCardName"/>
-					</div>	
-				</div>
-
-				<div class="form-group">
-					<label t:type="label" t:for="creditCardExpiryYear" class="col-sm-4">Card Expiration</label>
-					<div class="col-xs-12 col-sm-4">
-						<select t:type="select" t:id="creditCardExpiryMonth" class="form-control"
-							t:value="booking.creditCardExpiryMonth" t:model="months"></select>
+	
+					<div class="form-group">
+						<label t:type="label" t:for="creditCardType" class="col-md-4"/>
+						<div class="col-md-8">
+							<select t:type="select" t:id="creditCardType" t:value="booking.creditCardType">
+							</select>
+						</div>	
 					</div>
-					<div class="col-xs-12 col-sm-4">
-						<select t:type="select" t:id="creditCardExpiryYear" class="form-control"
-							t:value="booking.creditCardExpiryYear" t:model="years"></select>
+	
+					<div class="form-group">
+						<label t:type="label" t:for="creditCardName" class="col-md-4"/>
+						<div class="col-md-8">
+								<input t:type="textfield" t:id="creditCardName" class="form-control"
+									t:value="booking.creditCardName"/>
+						</div>	
 					</div>
-				</div>
+	
+					<div class="form-group">
+						<label t:type="label" t:for="creditCardExpiryYear" class="col-sm-4">Card Expiration</label>
+						<div class="col-xs-12 col-sm-4">
+							<select t:type="select" t:id="creditCardExpiryMonth" class="form-control"
+								t:value="booking.creditCardExpiryMonth" t:model="months"></select>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<select t:type="select" t:id="creditCardExpiryYear" class="form-control"
+								t:value="booking.creditCardExpiryYear" t:model="years"></select>
+						</div>
+					</div>
+					<div class="col-md-offset-4 col-md-8">
+						<t:submit class="btn btn-primary"  value="${message:button.next}..." disabled="submitDisabled"/>
+						${message:or}
+						<a href="#" t:type="eventlink" t:event="cancelBooking">${message:button.cancel}</a>
+					</div>
+				</t:formFragment>
+				
+				<t:formFragment t:id="bankAccountFields" visible="payingWithBankAccount">
+					<div class="alert alert-warning col-md-offset-4 col-md-8">
+						Sorry, payment by bank account is not yet supported.
+					</div>
+				</t:formFragment>
 
-				<div class="col-md-offset-4 col-md-8">
-					<input type="submit" class="btn btn-default" value="${message:button.book}..." />
-					${message:or}
-					<a href="#" t:type="eventlink" t:event="cancelBooking">${message:button.cancel}</a>
-				</div>
 			</form>
 		</t:block>
 
 		<t:block t:id="confirmBlock">
-			<div class="booking-details" t:type="beandisplay" t:object="booking" t:include="checkinDate,checkoutDate,creditCardNumber,total">
+			<div class="booking-details" t:type="beandisplay" t:object="booking" t:include="checkinDate,checkoutDate,total">
 				<p:creditCardNumber>
 					#### #### #### ${securedCardNumber}
 				</p:creditCardNumber>
@@ -116,7 +128,7 @@
 			<form class="full-form" t:type="form" t:id="confirmForm">
 				<t:errors />				
 				<div class="form-submit">
-					<input type="submit" class="btn btn-default" value="${message:button.confirm}" />
+					<input type="submit" class="btn btn-primary" value="${message:button.confirm}" />
 					or
 					<a href="#" t:type="eventlink" t:event="cancelConfirm">${message:button.change}</a>
 				</div>
@@ -142,9 +154,18 @@
 		</p>
 		<p>
 			In this case, first a form is presented containing fields for
-			dates and payment details. When that form is submitted, the page
+			room preferences payment details. When that form is submitted, the page
 			is redrawn with the form replaced by the booking details and a
 			"Confirm" button.
+		</p>
+		<p>
+			We're also using a 
+			<a href="http://tapestry.apache.org/current/apidocs/org/apache/tapestry5/corelib/components/FormFragment.html">
+			FormFragment</a> component (&lt;t:formFragment&gt;) around the credit card fields,
+			and we use a
+			<a href="http://tapestry.apache.org/current/apidocs/org/apache/tapestry5/corelib/mixins/TriggerFragment.html">
+			TriggerFragment</a> mixin (t:mixins="triggerFragment") on the Payment Type
+			radio buttons to show and hide the credit card fields.
 		</p>
 	</p:sidebar>
 

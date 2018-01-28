@@ -52,13 +52,15 @@ public class Booking implements Serializable
 
     private Hotel hotel;
 
-    private Date checkinDate;
+    private Date checkInDate;
 
-    private Date checkoutDate;
+    private Date checkOutDate;
 
     private String creditCardNumber;
 
     private CreditCardType creditCardType;
+
+    private PaymentType paymentType;
 
     private String creditCardName;
 
@@ -86,13 +88,14 @@ public class Booking implements Serializable
      * @param daysFromNow the number of days from today when the stay starts
      * @param nights the number of nights
      */
-    public Booking(Hotel hotel, User user, int daysFromNow, int nights)
+    public Booking(Hotel hotel, User user, Date checkInDate, Date checkOutDate)
     {
         this.hotel = hotel;
         setUser(user);
         this.smoking = false;
         this.beds = 1;
-        setReservationDates(daysFromNow, nights);
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
         creditCardExpiryMonth = Calendar.getInstance().get(Calendar.MONTH) + 1;
         this.creationDate = new Date();
         this.status = false;
@@ -114,12 +117,12 @@ public class Booking implements Serializable
     @Temporal(DATE)
     public Date getCheckinDate()
     {
-        return checkinDate;
+        return checkInDate;
     }
 
     public void setCheckinDate(Date datetime)
     {
-        this.checkinDate = datetime;
+        this.checkInDate = datetime;
     }
 
     @NotNull
@@ -159,12 +162,12 @@ public class Booking implements Serializable
     @Temporal(TemporalType.DATE)
     public Date getCheckoutDate()
     {
-        return checkoutDate;
+        return checkOutDate;
     }
 
     public void setCheckoutDate(Date checkoutDate)
     {
-        this.checkoutDate = checkoutDate;
+        this.checkOutDate = checkoutDate;
     }
 
     public boolean isSmoking()
@@ -211,6 +214,18 @@ public class Booking implements Serializable
     public void setCreditCardType(CreditCardType creditCardType)
     {
         this.creditCardType = creditCardType;
+    }
+
+    @NotNull(message = "Payment type is required")
+    @Enumerated(EnumType.STRING)
+    public PaymentType getPaymentType()
+    {
+        return paymentType;
+    }
+    
+    public void setPaymentType(PaymentType paymentType)
+    {
+        this.paymentType = paymentType;
     }
 
     @NotNull(message = "Credit card name is required")
@@ -273,30 +288,7 @@ public class Booking implements Serializable
     @Transient
     public int getNights()
     {
-        return (int) (checkoutDate.getTime() - checkinDate.getTime()) / 1000 / 60 / 60 / 24;
-    }
-
-    /**
-     * Initialize the check-in and check-out dates.
-     * 
-     * @param daysFromNow
-     *            Number of days the stay will begin from now
-     * @param nights
-     *            Length of the stay in number of nights
-     */
-    public void setReservationDates(int daysFromNow, int nights)
-    {
-        Calendar refDate = Calendar.getInstance();
-        refDate.set(
-                refDate.get(Calendar.YEAR),
-                refDate.get(Calendar.MONTH),
-                refDate.get(Calendar.DAY_OF_MONTH) + daysFromNow,
-                0,
-                0,
-                0);
-        setCheckinDate(refDate.getTime());
-        refDate.add(Calendar.DAY_OF_MONTH, nights);
-        setCheckoutDate(refDate.getTime());
+        return (int) (checkOutDate.getTime() - checkInDate.getTime()) / 1000 / 60 / 60 / 24;
     }
 
     public Date getCreationDate()

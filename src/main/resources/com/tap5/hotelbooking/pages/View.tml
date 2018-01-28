@@ -11,12 +11,30 @@
 		</p:stars>
 	</t:beanDisplay>
 	
-	<form t:type="form" class="full-form" t:id="startBookingForm" t:context="hotel">
+	<form t:type="form" class="form-horizontal" t:id="startBookingForm" t:context="hotel">
 
-		<div class="form-submit">
-			<input type="submit" class="btn btn-default" value="${message:button.book}" />
-			or 
-			<a href="#" t:type="pagelink" t:page="index">${message:button.returnToSearch}</a>
+		<div class="form-group">
+			<label t:type="label" t:for="checkInDate" class="col-md-4"/>
+			<div class="col-md-8">
+				<input t:type="datefield" t:id="checkInDate" t:value="checkInDate"
+						t:validate="required"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label t:type="label" t:for="checkOutDate" class="col-md-4"/>
+			<div class="col-md-8">
+				<input t:type="datefield" t:id="checkOutDate" t:value="checkOutDate"
+						t:validate="required"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="form-submit col-md-offset-4 col-md-8">
+				<input type="submit" class="btn btn-primary" value="${message:button.checkAvailability}" />
+				or 
+				<a href="#" t:type="pagelink" t:page="index">${message:button.returnToSearch}</a>
+			</div>
 		</div>
 
 	</form>

@@ -1,6 +1,7 @@
 package com.tap5.hotelbooking.data;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.tap5.hotelbooking.entities.Booking;
@@ -43,9 +44,9 @@ public class UserWorkspace
      * @param hotel the hotel to book
      * @param user the current user
      */
-    public void startBooking(Hotel hotel, User user)
+    public void startBooking(Hotel hotel, User user, Date checkInDate, Date checkOutDate)
     {
-        Booking booking = new Booking(hotel, user, 1, 1);
+        Booking booking = new Booking(hotel, user, checkInDate, checkOutDate);
         this.current = booking;
         notConfirmed.add(booking);
     }

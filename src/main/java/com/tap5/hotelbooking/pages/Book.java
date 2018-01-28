@@ -7,9 +7,11 @@ import com.tap5.hotelbooking.data.UserWorkspace;
 import com.tap5.hotelbooking.data.Years;
 import com.tap5.hotelbooking.entities.Booking;
 import com.tap5.hotelbooking.entities.Hotel;
+import com.tap5.hotelbooking.entities.PaymentType;
 import com.tap5.hotelbooking.services.Authenticator;
 
 import org.apache.tapestry5.Block;
+import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.EventContext;
 import org.apache.tapestry5.PersistenceConstants;
@@ -37,10 +39,7 @@ public class Book
     private Hotel hotel;
 
     @Inject
-    private Block bookBlock;
-
-    @Inject
-    private Block confirmBlock;
+    private Block bookBlock, confirmBlock;
 
     @Inject
     private Messages messages;
@@ -53,6 +52,9 @@ public class Book
 
     @InjectComponent
     private Form bookingForm;
+
+    @InjectComponent
+    private ClientElement creditCardFields, bankAccountFields;
 
     @Property
     @Persist(PersistenceConstants.FLASH)
@@ -152,6 +154,18 @@ public class Book
             bookingForm.recordError(messages.get("error.checkOutBeforeCheckIn"));
             return;
         }
+        
+        switch (booking.getPaymentType())
+        {
+            case BANK_ACCOUNT:
+                bookingForm.recordError("message.get(error.paymentMethodNotSupported");
+                break;
+            case CREDIT_CARD:
+                break;
+            default:
+                break;
+            
+        }
 
         userWorkspace.getCurrent().setStatus(true);
     }
@@ -192,5 +206,29 @@ public class Book
 
         return Index.class;
     }
+    
+    public PaymentType getCreditCard()
+    {
+        return PaymentType.CREDIT_CARD;
+    }
 
+    public PaymentType getBankAccount()
+    {
+        return PaymentType.BANK_ACCOUNT;
+    }
+
+    public boolean isPayingWithCreditCard()
+    {
+        return PaymentType.CREDIT_CARD.equals(booking.getPaymentType());
+    }
+
+    public boolean isPayingWithBankAccount()
+    {
+        return PaymentType.BANK_ACCOUNT.equals(booking.getPaymentType());
+    }
+
+    public boolean isSubmitDisabled()
+    {
+        return isPayingWithBankAccount();
+    }
 }
