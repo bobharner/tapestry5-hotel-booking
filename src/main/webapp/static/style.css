@@ -3,7 +3,7 @@ body {
 	color: #333333;
 	font-family: Verdana, Helvetica, sans-serif;
 	background-color: #ffffff;
-	font-size:13px;	
+	font-size:14px;	
 }
 
 h1 { margin:0px 15px; float:left; }
@@ -18,6 +18,7 @@ a img { text-decoration:none; }
 .topnav li { color:#FFFFFF; font-weight: normal; display:inline; padding:0px 5px; margin:0px; white-space: nowrap; border-right: 1px solid #ccc;  line-height:30px; }
 .topnav li.last { border-right:0px;  }
 .topnav a { color: #ffffff; text-decoration: none;}
+.topnav a:hover { text-decoration: underline; }
 .topnav span { color: #ffffff; }
 
 .bs {   	   box-shadow:0px 0px 20px rgba(0,0,0,0.3);
