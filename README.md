@@ -17,8 +17,8 @@ demonstrates:
 * Form fragments
 * Easy annotation-based authentication/authorization
 
-Building and running the app is easy. It uses maven and jetty, so you just need
-to do:
+Building and running the app is easy. It uses Java 8, maven and jetty, so you
+just need to do:
 
     mvn jetty:run
 
