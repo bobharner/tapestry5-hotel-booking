@@ -1,5 +1,7 @@
 package com.tap5.hotelbooking.components;
 
+import java.util.Locale;
+
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.Block;
 import org.apache.tapestry5.ComponentResources;
@@ -9,6 +11,7 @@ import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.PersistentLocale;
 
 import com.tap5.hotelbooking.pages.Index;
 import com.tap5.hotelbooking.services.Authenticator;
@@ -37,6 +40,24 @@ public class Layout
 
     @Inject
     private Messages messages;
+
+    @Inject
+    private PersistentLocale persistentLocale;
+
+    /**
+     * Respond to the user selecting English language
+     */
+    public void onEn() {
+        persistentLocale.set(Locale.ENGLISH);
+    }
+
+    /**
+     * Respond to the user selecting Spanish language
+     */
+    public void onES() {
+        Locale locale = new Locale("es");
+        persistentLocale.set(locale);
+    }
 
     /**
      * Respond to the user clicking on the "Log Out" link

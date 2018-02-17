@@ -14,12 +14,12 @@ import org.apache.tapestry5.Block;
 import org.apache.tapestry5.ClientElement;
 import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.EventContext;
-import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.ioc.services.ThreadLocale;
 
 import java.util.Calendar;
 
@@ -50,6 +50,9 @@ public class Book
     @Inject
     private Authenticator authenticator;
 
+    @Inject
+    private ThreadLocale threadLocale;
+
     @InjectComponent
     private Form bookingForm;
 
@@ -57,7 +60,7 @@ public class Book
     private ClientElement creditCardFields, bankAccountFields;
 
     @Property
-    @Persist(PersistenceConstants.FLASH)
+    @Persist()
     private Booking booking;
 
     @Persist
@@ -70,7 +73,15 @@ public class Book
     private SelectModel years = new Years();
 
     @Property
-    private SelectModel months = new Months();
+    private SelectModel months;
+
+    /**
+     * Respond to the form component's "prepare for render" event. We create the months
+     * select model here because it needs to be rebuilt if the locale changes
+     */
+    void onPrepareForRender() {
+        months = new Months(threadLocale.getLocale());
+    }
 
     /**
      * Get the current step
@@ -81,7 +92,7 @@ public class Book
     {
         return confirmationStep ? confirmBlock : bookBlock;
     }
-    
+
     /**
      * Get a heading string to display at the top of the page. This varies
      * depending on what step we're at.

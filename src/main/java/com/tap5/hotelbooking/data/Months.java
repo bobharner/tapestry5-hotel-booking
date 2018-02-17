@@ -1,7 +1,9 @@
 package com.tap5.hotelbooking.data;
 
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.tapestry5.OptionGroupModel;
 import org.apache.tapestry5.OptionModel;
@@ -19,20 +21,14 @@ public class Months extends AbstractSelectModel
 
     private List<OptionModel> options = new ArrayList<OptionModel>();
 
-    public Months()
+    public Months(Locale locale)
     {
-        options.add(new OptionModelImpl("January", 1));
-        options.add(new OptionModelImpl("February", 2));
-        options.add(new OptionModelImpl("March", 3));
-        options.add(new OptionModelImpl("April", 4));
-        options.add(new OptionModelImpl("Mai", 5));
-        options.add(new OptionModelImpl("June", 6));
-        options.add(new OptionModelImpl("July", 7));
-        options.add(new OptionModelImpl("August", 8));
-        options.add(new OptionModelImpl("September", 9));
-        options.add(new OptionModelImpl("October", 10));
-        options.add(new OptionModelImpl("November", 11));
-        options.add(new OptionModelImpl("December", 12));
+        int monthNum = 0;
+        String[] monthNames = new DateFormatSymbols(locale).getMonths();
+        for (String monthName : monthNames)
+        {
+            options.add(new OptionModelImpl(monthName, monthNum++));
+        }
     }
 
     public List<OptionGroupModel> getOptionGroups()
@@ -43,6 +39,12 @@ public class Months extends AbstractSelectModel
     public List<OptionModel> getOptions()
     {
         return options;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Months [options=" + options + "]";
     }
 
 }

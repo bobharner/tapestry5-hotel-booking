@@ -92,7 +92,7 @@
 					</div>
 	
 					<div class="form-group">
-						<label t:type="label" t:for="creditCardExpiryYear" class="col-sm-4">Card Expiration</label>
+						<label t:type="label" t:for="creditCardExpiryYear" class="col-sm-4">${message:creditCardExpiration}</label>
 						<div class="col-xs-12 col-sm-4">
 							<select t:type="select" t:id="creditCardExpiryMonth" class="form-control"
 								t:value="booking.creditCardExpiryMonth" t:model="months"></select>

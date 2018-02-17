@@ -176,3 +176,6 @@ DIV.alerts {
 	top: 8em;
 	left: 50em;
 }
+LI.locale-selection {
+	margin-left: 2em;
+}

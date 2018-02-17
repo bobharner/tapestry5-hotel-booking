@@ -28,6 +28,8 @@
 						</li>
 				</p:else>
 				</t:security.authenticated>
+				<li class="locale-selection">${message:nav.language}: <t:eventLink event="en">En</t:eventLink></li>
+				<li class="last"><t:eventLink event="es">Es</t:eventLink></li>
 			</ul>
 		</div>
 
