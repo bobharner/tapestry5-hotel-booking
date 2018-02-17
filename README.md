@@ -6,9 +6,16 @@ running with Tapestry 5.4 at:
 	https://tapestry-app.apache.org/hotels/
 
 This is Tapestry's take on a classic "Hotel Booking" application (ala Seam). It
-demonstrates simple page navigation, form validation and submission, session
-management (including a shopping-cart-like mechanism), and easy annotation-based
-authentication/authorization.
+demonstrates:
+
+* Simple page navigation
+* Custom components
+* Form validation and submission
+* Session management (including a shopping-cart-like mechanism)
+* Partial-page updates (AJAX)
+* Localization (English & Spanish)
+* Form fragments
+* Easy annotation-based authentication/authorization
 
 Building and running the app is easy. It uses maven and jetty, so you just need
 to do:
