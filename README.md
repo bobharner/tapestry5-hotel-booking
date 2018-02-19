@@ -11,6 +11,7 @@ demonstrates:
 * Simple page navigation
 * Custom components
 * Form validation and submission
+* Custom validation macros (usernameValidator & passwordValidator)
 * Session management (including a shopping-cart-like mechanism)
 * Partial-page updates (AJAX)
 * Localization (English & Spanish)
