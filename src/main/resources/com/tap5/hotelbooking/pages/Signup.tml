@@ -19,7 +19,7 @@
 			<label t:type="label" t:for="username" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="textfield" t:id="username"
-					placeholder="desired user name"/>
+					t:validate="usernameValidator" placeholder="desired user name"/>
 			</div>
 		</div>
 
@@ -43,7 +43,7 @@
 			<label t:type="label" t:for="password" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="passwordField" t:id="password"
-					placeholder="desired password (at least 6 characters)"/>
+					t:validate="passwordValidator" placeholder="desired password (at least 6 characters)"/>
 			</div>
 		</div>
 
@@ -51,7 +51,7 @@
 			<label t:type="label" t:for="verifyPassword" class="col-md-4"/>
 			<div class="col-md-8">
 				<input t:type="passwordField" t:id="verifyPassword"
-					placeholder="re-type your password"/>
+					t:validate="passwordValidator" placeholder="re-type your password"/>
 			</div>
 		</div>
 
