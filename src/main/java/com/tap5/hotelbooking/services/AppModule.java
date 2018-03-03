@@ -72,6 +72,8 @@ public class AppModule
         // annotations), so if app is served under HTTP it will stay that way,
         // and if served under HTTPS it will also stay that way, for all pages
         configuration.add(SymbolConstants.SECURE_ENABLED, "false");
+
+        configuration.add(SymbolConstants.ENABLE_PAGELOADING_MASK, "false");
     }
 
     @Contribute(ValidatorMacro.class)
