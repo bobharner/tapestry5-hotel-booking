@@ -59,7 +59,7 @@
 		form. It also demonstrates the
 		<a href="http://tapestry.apache.org/5.3/apidocs/org/apache/tapestry5/corelib/components/Errors.html">errors</a>
 		component (&lt;t:errors&gt;), which is used to display errors that are not tied to a specific field. You
-		can see this by intentionly enter different "New Password" and "Verify Password" values here.
+		can see this by intentionally entering different "New Password" and "Verify Password" values here.
 		</p>
 	</p:sidebar>
   
