@@ -9,7 +9,8 @@
     <name>tapestry5-hotel-booking Tapestry 5 Application</name>
 
     <properties>
-        <tapestry-release-version>5.4.3</tapestry-release-version>
+        <tapestry-release-version>5.5.0</tapestry-release-version>
+        <hibernate-version>5.0.1.Final</hibernate-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -65,7 +66,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>4.0.2.GA</version>  <!-- 5.0.1.Final -->
+            <version>${hibernate-version}</version>
             <type>jar</type>
         </dependency>
 
@@ -102,7 +103,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.2.2.Final</version>
+            <version>${hibernate-version}</version>
         </dependency>
 
 		<!--
@@ -127,8 +128,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<encoding>UTF-8</encoding>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<optimize>true</optimize>
 				</configuration>
 			</plugin>
