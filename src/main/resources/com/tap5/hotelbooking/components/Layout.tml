@@ -64,9 +64,9 @@
 			</div>
 		</div>
 
-		<div id="footer" class="row">
-			Created with <a href="http://tapestry.apache.org/">Apache Tapestry 5.4</a> and JPA (with Hibernate 3). 
-			Get the source code of Hotel Booking at <a href="http://github.com/bobharner/tapestry5-hotel-booking-5.4/">Github</a>
+		<div id="footer">
+			Created with <a href="http://tapestry.apache.org/">Apache Tapestry 5.5.0</a> and JPA (with Hibernate 5). 
+			Get the source code of Hotel Booking at <a href="http://github.com/bobharner/tapestry5-hotel-booking/">Github</a>
 		</div>
 		<t:if test="symbol:tapestry.production-mode" negate="true">
 			<div class="alert alert-warning">WARNING: production mode = FALSE (performance and security consequences)</div>

@@ -25,7 +25,7 @@
 		<div class="form-group">
 			<label t:type="label" t:for="oldPassword" class="col-md-4"/>
 			<div class="col-md-8">
-				<input t:type="passwordField" t:id="oldPassword" t:validate="passwordValidator"
+				<input t:type="passwordField" t:id="oldPassword" t:validate="password"
 					placeholder="${message:oldPassword-label}"/>
 			</div>
 		</div>
@@ -33,7 +33,7 @@
 		<div class="form-group">
 			<label t:type="label" t:for="newPassword" class="col-md-4"/>
 			<div class="col-md-8">
-				<input t:type="passwordField" t:id="newPassword" t:validate="passwordValidator"
+				<input t:type="passwordField" t:id="newPassword" t:validate="password"
 					placeholder="${message:newPassword-label}"/>
 			</div>
 		</div>
@@ -41,13 +41,13 @@
 		<div class="form-group">
 			<label t:type="label" t:for="verifyPassword" class="col-md-4"/>
 			<div class="col-md-8">
-				<input t:type="passwordField" t:id="verifyPassword" t:validate="passwordValidator"
+				<input t:type="passwordField" t:id="verifyPassword" t:validate="password"
 					placeholder="${message:newPassword-label}"/>
 			</div>
 		</div>
 
 		<div class="col-md-offset-4 col-md-8">
-			<input type="submit" value="${message:button.save}" class="btn btn-default"/>
+			<input type="submit" value="${message:button.save}" class="btn btn-primary"/>
 			${message:or} 
 			<t:pageLink page="index">${message:button.cancel}</t:pageLink>
 		</div>

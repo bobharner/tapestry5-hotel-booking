@@ -14,6 +14,7 @@ import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.ImportModule;
 import org.apache.tapestry5.ioc.services.ApplicationDefaults;
 import org.apache.tapestry5.ioc.services.SymbolProvider;
+import org.apache.tapestry5.modules.Bootstrap4Module;
 import org.apache.tapestry5.services.ComponentRequestFilter;
 import org.apache.tapestry5.services.ComponentRequestHandler;
 import org.apache.tapestry5.services.ComponentSource;
@@ -31,7 +32,8 @@ import com.tap5.hotelbooking.security.AuthenticationFilter;
  */
 @ImportModule(
         { HibernateModule.class, // DAO layer
-            DataModule.class     // Demo data loading
+            DataModule.class,     // Demo data loading
+            Bootstrap4Module.class // use Bootstrap 4 (instead of 3)
         })
 public class AppModule
 {
@@ -58,6 +60,7 @@ public class AppModule
         configuration.add(SymbolConstants.APPLICATION_VERSION, "2.0-SNAPSHOT");
         configuration.add(SymbolConstants.PRODUCTION_MODE, "true");
         configuration.add(SymbolConstants.RESTRICTIVE_ENVIRONMENT, "true");
+        configuration.add(SymbolConstants.BEAN_DISPLAY_CSS_CLASS, "bg-light border p-2 dl-horizontal");
 
         // Generate a random HMAC key for form signing (not cluster safe).
         // Normally it would be better to use a fixed password-like string, but

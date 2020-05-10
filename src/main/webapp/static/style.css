@@ -14,7 +14,12 @@ a img { text-decoration:none; }
 
 .clearer { clear:both; }
 
-.topnav { list-style: none; margin: 0 auto; text-align:right; height:30px; background:#1B181C url('top-bg.png') repeat-x top right; }
+.topnav { list-style: none;
+	margin: 0 auto;
+	text-align:right;
+	height:30px;
+	width: 100%;
+	background:#1B181C linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(50,50,50,1) 80%); }
 .topnav li { color:#FFFFFF; font-weight: normal; display:inline; padding:0px 5px; margin:0px; white-space: nowrap; border-right: 1px solid #ccc;  line-height:30px; }
 .topnav li.last { border-right:0px;  }
 .topnav a { color: #ffffff; text-decoration: none;}
@@ -179,4 +184,37 @@ DIV.alerts {
 }
 LI.locale-selection {
 	margin-left: 2em;
+}
+[data-error-block-for] {
+	color: red;
+}
+
+/* bootstrap 3 classes back-ported */
+dl {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+dt,
+dd {
+  line-height: 1.42857143;
+}
+dt {
+  font-weight: 700;
+}
+dd {
+  margin-left: 0;
+}
+@media (min-width: 768px) {
+  .dl-horizontal dt {
+    float: left;
+    width: 160px;
+    clear: left;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .dl-horizontal dd {
+    margin-left: 180px;
+  }
 }

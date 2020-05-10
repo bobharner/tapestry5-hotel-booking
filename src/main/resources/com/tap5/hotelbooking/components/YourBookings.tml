@@ -4,7 +4,7 @@
 <t:container xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
 	
 <t:if test="bookings">
-	<div class="yourBookings bg-info">
+	<div class="yourBookings bg-light">
 		<h2>${message:heading.yourBookings}</h2>
 		<ul id="your-bookings" xml:space="preserve">
 			<li t:type="loop" t:source="bookings" t:value="current">
