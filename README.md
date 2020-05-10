@@ -1,17 +1,16 @@
 # Apache Tapestry: Hotel Booking Simulation
 
 This is the source code to the "Hotel Booking" Tapestry demo app, currently
-running with Tapestry 5.4 at:
+running with Tapestry 5.5.0 at:
 
 	https://tapestry-app.apache.org/hotels/
 
-This is Tapestry's take on a classic "Hotel Booking" application (ala Seam). It
+This is Tapestry's take on a classic "Hotel Booking" application. It
 demonstrates:
 
 * Simple page navigation
 * Custom components
 * Form validation and submission
-* Custom validation macros (usernameValidator & passwordValidator)
 * Session management (including a shopping-cart-like mechanism)
 * Partial-page updates (AJAX)
 * Localization (English & Spanish)
